@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<includes>
+
+   <include name="View_500_Thumbnails">
+    
+        <control type="group">
+            <include>Animation.Common</include>
+            <visible>Control.IsVisible(500)</visible>
+         
+            
+            <control type="group">
+                <control type="panel" id="500">
+                    <top>206</top>
+                    <left>70</left>
+                    <width>1780</width>
+                    <height>660</height>
+                    <onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
+                    <onright>60</onright>
+                    <onup>500</onup>
+                    <ondown>500</ondown>
+                    <preloaditems>2</preloaditems>
+                    <pagecontrol>60</pagecontrol>
+                    <orientation>vertical</orientation>
+<!-- Modification Label ICI -->                      
+                    <viewtype label="31764">list</viewtype>
+                    <scrolltime tween="quadratic">400</scrolltime>
+                    <itemlayout height="330" width="296">
+                        <control type="image">
+                            <width>100%</width>
+                            <height>100%</height>
+                            <texture border="10">common/nofocus-shadow10.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>10</left>
+                            <top>10</top>
+                            <right>10</right>
+                            <bottom>10</bottom>
+                            <texture border="5" colordiffuse="Panel">common/box.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <bottom>10</bottom>
+                            <height>50</height>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <font>Tiny</font>
+                            <label>$INFO[ListItem.Label]</label>
+                            <textcolor>PanelWhite70</textcolor>
+<!-- Ajout ICI -->        
+		         <visible>!Container.Content(episodes)</visible>                            
+                        </control>
+
+<!-- Ajout ICI -->                                
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <bottom>10</bottom>
+                            <height>50</height>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <font>Tiny</font>
+                            <label>$VAR[LabelSeasonZero]$INFO[ListItem.Season,,E]$VAR[LabelEpisodeZero2]$INFO[ListItem.Episode,, : ]$INFO[ListItem.Title]</label>
+            <visible>Container.Content(episodes)</visible>
+                            <textcolor>PanelWhite70</textcolor>
+                        </control>
+                                       
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>                               
+                            <texture diffuse="diffuse/wall.png" colordiffuse="333333">common/white.png</texture>
+                            <visible>Container.Content(genres) | substring(Container.FolderPath,plugin://plugin.audio.radio_de)</visible>
+                        </control>
+                        <control type="image">
+ 			<left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture diffuse="diffuse/wall.png" colordiffuse="ff181818">common/white.png</texture>
+                            <visible>!substring(Container.FolderPath,plugin://plugin.audio.radio_de) + !Container.Content(genres) + !Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(actors) + !Container.Content(sets)</visible>
+                        </control>
+                        <control type="image">
+ 			<left>57</left>
+                            <top>17</top>
+                            <width>180</width>
+                            <height>262</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture diffuse="diffuse/wall.png" colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                            <visible>Container.Content(sets) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false" align="center" aligny="center">keep</aspectratio> 
+                            <texture diffuse="diffuse/wall.png" background="true">flags/genres/$INFO[ListItem.Label].png</texture>
+                            <visible>!Container.Content(albums) + !Container.Content(artists) + !Container.Content(songs)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false" align="center" aligny="center">scale</aspectratio>                              
+                            <texture diffuse="diffuse/wall.png" background="true">flags/genres/$INFO[ListItem.Label].png</texture>
+                            <visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(genres) | substring(Container.FolderPath,plugin://plugin.audio.radio_de)</visible>
+                        </control>
+                         <control type="image">
+                            <left>60</left>
+                            <top>20</top>
+                            <width>174</width>
+                            <height>256</height>
+                            <aspectratio scalediffuse="true" align="center" aligny="center">stretch</aspectratio>
+                            <texture diffuse="diffuse/wall.png" background="true">$VAR[PosterImage]</texture>                   
+                            <visible>Container.Content(sets) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="true" align="center" aligny="center">keep</aspectratio>
+                            <texture diffuse="diffuse/wall.png" background="true">$VAR[ThumbImage]</texture>                           
+                            <visible>!Container.Content(sets) + !Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(actors) + !Container.Content(albums) + !Container.Content(artists) + !Container.Content(songs) + !Container.Content(genres) + !substring(Container.FolderPath,plugin://plugin.audio.radio_de)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false" align="center" aligny="center">keep</aspectratio>
+                            <texture diffuse="diffuse/wall.png" background="true">$VAR[ThumbImage]</texture>
+                            <visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs)</visible>
+                        </control>
+                                            
+                        <control type="image">
+                            <centerright>35</centerright>
+                            <centertop>32</centertop>
+                            <width>32</width>
+                            <height>32</height>
+                            <aspectratio aligny="top">keep</aspectratio>          
+            		<texture>$VAR[PercentWatchedBack]</texture>
+                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                        </control>                        
+                        <control type="image">
+                            <centerright>35</centerright>
+                            <centertop>32</centertop>
+                            <width>32</width>
+                            <height>32</height>
+                            <aspectratio aligny="top">keep</aspectratio>          
+           	         <texture colordiffuse="$VAR[ColorHighlight]">$VAR[PercentWatched]</texture>
+                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                        </control>
+
+                    </itemlayout>
+                    <focusedlayout height="330" width="296">
+                        <control type="image">
+                            <width>100%</width>
+                            <height>100%</height>
+                            <texture border="10">common/nofocus-shadow10.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>10</left>
+                            <top>10</top>
+                            <right>10</right>
+                            <bottom>10</bottom>
+                            <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <bottom>10</bottom>
+                            <height>50</height>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <font>Tiny</font>
+                            <label>$INFO[ListItem.Label]</label>
+                            <textcolor>Selected</textcolor>
+<!-- Ajout ICI --> 
+		         <visible>!Container.Content(episodes)</visible>                            
+                        </control>
+
+<!-- Ajout ICI -->                         
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <bottom>10</bottom>
+                            <height>50</height>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <font>Tiny</font>
+                            <label>$VAR[LabelSeasonZero]$INFO[ListItem.Season,,E]$VAR[LabelEpisodeZero2]$INFO[ListItem.Episode,, : ]$INFO[ListItem.Title]</label>
+          	         <visible>Container.Content(episodes)</visible>
+                            <textcolor>Selected</textcolor>
+                        </control>                                           
+                        
+<!-- Ajout ICI -->                        
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>                               
+                            <texture diffuse="diffuse/wall.png" colordiffuse="333333">common/white.png</texture>
+                            <visible>Container.Content(genres) | substring(Container.FolderPath,plugin://plugin.audio.radio_de)</visible>
+                        </control>
+                        <control type="image">
+ 			<left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture diffuse="diffuse/wall.png" colordiffuse="ff181818">common/white.png</texture>
+                            <visible>!substring(Container.FolderPath,plugin://plugin.audio.radio_de) + !Container.Content(genres) + !Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(actors) +!Container.Content(sets)</visible>
+                        </control>
+                        <control type="image">
+ 			<left>57</left>
+                            <top>17</top>
+                            <width>180</width>
+                            <height>262</height>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture diffuse="diffuse/wall.png" colordiffuse="Panel">common/white.png</texture>
+                            <visible>Container.Content(sets) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false" align="center" aligny="center">keep</aspectratio> 
+                            <texture diffuse="diffuse/wall.png" background="true">flags/genres/$INFO[ListItem.Label].png</texture>
+                            <visible>!Container.Content(albums) + !Container.Content(artists) + !Container.Content(songs)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false" align="center" aligny="center">scale</aspectratio>                              
+                            <texture diffuse="diffuse/wall.png" background="true">flags/genres/$INFO[ListItem.Label].png</texture>
+                            <visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(genres) | substring(Container.FolderPath,plugin://plugin.audio.radio_de)</visible>
+                        </control>
+                         <control type="image">
+                            <left>60</left>
+                            <top>20</top>
+                            <width>174</width>
+                            <height>256</height>
+                            <aspectratio scalediffuse="true" align="center" aligny="center">stretch</aspectratio>
+                            <texture diffuse="diffuse/wall.png" background="true">$VAR[PosterImage]</texture>                   
+                            <visible>Container.Content(sets) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="true" align="center" aligny="center">keep</aspectratio>
+                            <texture diffuse="diffuse/wall.png" background="true">$VAR[ThumbImage]</texture>                           
+                            <visible>!Container.Content(sets) + !Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(actors) + !Container.Content(albums) + !Container.Content(artists) + !Container.Content(songs) + !Container.Content(genres) + !substring(Container.FolderPath,plugin://plugin.audio.radio_de)</visible>
+                        </control>
+                        <control type="image">
+                            <left>20</left>
+                            <top>20</top>
+                            <right>20</right>
+                            <height>256</height>
+                            <aspectratio scalediffuse="false" align="center" aligny="center">keep</aspectratio>
+                            <texture diffuse="diffuse/wall.png" background="true">$VAR[ThumbImage]</texture>
+                            <visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs)</visible>
+                        </control>
+
+                        <control type="image">
+                            <centerright>35</centerright>
+                            <centertop>32</centertop>
+                            <width>32</width>
+                            <height>32</height>
+                            <aspectratio aligny="top">keep</aspectratio>         
+                            <texture>$VAR[PercentWatchedBack]</texture>
+                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                        </control>                        
+                        
+                        <control type="image">
+                            <centerright>35</centerright>
+                            <centertop>32</centertop>
+                            <width>32</width>
+                            <height>32</height>
+                            <aspectratio aligny="top">keep</aspectratio>            
+                            <texture colordiffuse="$VAR[ColorHighlight]">$VAR[PercentWatched]</texture>
+                            <visible>!stringcompare(ListItem.Label,..)</visible>
+                        </control>
+                    </focusedlayout>
+                </control>
+                
+            
+            </control>
+            <include>Furniture_Scrollbar</include>
+        </control>
+    </include>
+</includes>

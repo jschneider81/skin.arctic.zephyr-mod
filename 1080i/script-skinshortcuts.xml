@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <allowoverlay>yes</allowoverlay>
+    <defaultcontrol always="true">401</defaultcontrol>
+
+    <controls>
+        <!--<include>GlobalBackground</include>
+        <include>Furniture_Header</include>
+        <include>Furniture_NowPlaying</include>
+        <include>Furniture_Clock</include>
+        <include>Furniture_Weather</include>-->
+        <control type="group">
+            <visible>IsEmpty(Window.Property(additionalDialog))</visible>
+
+            <!--<include>Animation.Common</include>-->
+            <left>72</left>
+            <right>72</right>
+            <top>208</top>
+            <height>656</height>
+            
+            <control type="image">
+                <width>100%</width>
+                <height>100%</height>
+                <texture border="16" colordiffuse="Panel">common/rounded-shadow8.png</texture>
+            </control>
+            
+            <control type="group">
+                <left>8</left>
+                <right>8</right>
+                <top>8</top>
+                <bottom>8</bottom>
+                <!-- Left Group -->
+                <control type="list" id="211">
+                    <description>Button Area</description>
+                    <width>450</width>
+                    <top>140</top>
+                    <bottom>0</bottom>
+                    <onleft>211</onleft>
+                    <onright>9100</onright>
+                    <onup>211</onup>
+                    <ondown>211</ondown>
+                    <orientation>vertical</orientation>
+                    <itemlayout width="450" height="70">
+                        <control type="label">
+                            <left>30</left>
+                            <right>30</right>
+                            <info>ListItem.Label</info>
+                            <font>Small</font>
+                            <textcolor>PanelWhite100</textcolor>
+                            <disabledcolor>PanelWhite12</disabledcolor>
+                        </control>
+                        <control type="image">
+                            <right>0</right>
+                            <top>0</top>
+                            <width>66</width>
+                            <height>66</height>
+                            <texture colordiffuse="PanelWhite100">$INFO[ListItem.Icon]</texture>
+                            <visible>substring(ListItem.Icon,special://skin/extras/icons)</visible>
+                            <visible>Skin.HasSetting(home.showicons) | stringcompare(Window.Property(groupname),movieshub) | stringcompare(Window.Property(groupname),episodeshub)</visible>
+                            <visible>!stringcompare(Window.Property(groupname),powermenu)</visible>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="450" height="70">
+                        <control type="image">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <width>100%</width>
+                            <height>70</height>
+                            <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>30</left>
+                            <right>30</right>
+                            <info>ListItem.Label</info>
+                            <font>Small</font>
+                            <textcolor>PanelWhite100</textcolor>
+                            <disabledcolor>PanelWhite12</disabledcolor>
+                        </control>
+                        <control type="image">
+                            <right>0</right>
+                            <top>0</top>
+                            <width>66</width>
+                            <height>66</height>
+                            <texture colordiffuse="PanelWhite100">$INFO[ListItem.Icon]</texture>
+                            <visible>substring(ListItem.Icon,special://skin/extras/icons)</visible>
+                            <visible>Skin.HasSetting(home.showicons) | stringcompare(Window.Property(groupname),movieshub) | stringcompare(Window.Property(groupname),episodeshub)</visible>
+                            <visible>!stringcompare(Window.Property(groupname),powermenu)</visible>
+                        </control>
+                    </focusedlayout>
+                </control>
+                
+                
+                <!-- Right Group -->
+                <control type="grouplist" id="9100">
+                    <description>Control Area</description>
+                    <left>450</left>
+                    <right>0</right>
+                    <top>140</top>
+                    <bottom>10</bottom>
+                    <itemgap>0</itemgap>
+                    <onleft>211</onleft>
+                    <onright>9000</onright>
+                    <onup>9100</onup>
+                    <ondown>9100</ondown>
+                    <orientation>vertical</orientation>
+                    <control type="button" id="401" description="Alt chooser">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                    </control>
+                    <control type="button" id="307" description="Custom">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label2>$INFO[Container(211).ListItem.Property(displaypath)]</label2>
+                    </control>
+                    <control type="button" id="305" description="Set label">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label2>$INFO[Container(211).ListItem.Label]</label2>
+                    </control>
+                    <control type="button" id="312" description="Widget">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label2>$INFO[Container(211).ListItem.Property(widgetName)]</label2>
+                        <visible>stringcompare(Window.Property(groupname),mainmenu)</visible>
+                    </control>
+                    <control type="button" id="501" description="Widget icon aspect ratio">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label>31776</label>
+                        <label2>$VAR[WidgetIconLabel]</label2>
+                        <visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
+                        <onclick>SetProperty(chooseProperty,widgetIcon)</onclick>
+                        <onclick>SendClick(404)</onclick>
+                        <enable>!StringCompare(Container(211).ListItem.Property(widget),weather)</enable>
+                    </control>
+                    <control type="button" id="310" description="Background">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label2>$INFO[Container(211).ListItem.Property(backgroundName)]</label2>
+                        <visible>stringcompare(Window.Property(groupname),mainmenu)</visible>
+                    </control>
+                    <control type="button" id="311" description="Browse for icon">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label>31181</label>
+                        <label2>$INFO[Container(211).ListItem.Icon]</label2>
+                        <visible>stringcompare(Window.Property(groupname),movieshub) | stringcompare(Window.Property(groupname),episodeshub) | Skin.HasSetting(home.showicons)</visible>
+                        <visible>!stringcompare(Window.Property(groupname),powermenu)</visible>
+                    </control>
+                    <control type="button" id="405" description="Set submenu">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label>31775</label>
+                        <visible>stringcompare(Window.Property(groupname),mainmenu)</visible>
+                        <visible>!stringcompare(Container(211).ListItem.Label2,MovieHub) + !stringcompare(Container(211).ListItem.Label2,TVHub)</visible>
+                    </control>
+                    <control type="button" id="9301" description="Set MovieHub">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label>31178</label>
+                        <visible>stringcompare(Window.Property(groupname),mainmenu)</visible>
+                        <visible>stringcompare(Container(211).ListItem.Label2,MovieHub)</visible>
+                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=movieshub)</onclick>
+                    </control>
+                    <control type="button" id="9302" description="Set TVHub">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <label>31178</label>
+                        <visible>stringcompare(Window.Property(groupname),mainmenu)</visible>
+                        <visible>stringcompare(Container(211).ListItem.Label2,TVHub)</visible>
+                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=episodeshub)</onclick>
+                    </control>
+                    <control type="button" id="301" description="Add">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                    </control>
+                    <control type="button" id="303" description="Up">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                    </control>
+                    <control type="button" id="304" description="Down">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                    </control>
+                    <control type="button" id="302" description="Delete">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                    </control>                    
+                    <control type="button" id="308" description="Reset">
+                        <width>1310</width>
+                        <include>DefSettingsButton</include>
+                        <visible>!stringcompare(Window.Property(groupname),mainmenu)</visible>
+                    </control>
+                    
+                </control>
+                
+                
+                
+                <!-- Lines -->
+                <control type="image">
+                    <top>10</top>
+                    <left>450</left>
+                    <width>1</width>
+                    <bottom>10</bottom>
+                    <colordiffuse>Black12</colordiffuse>
+                    <texture>common/white.png</texture>
+                </control>
+         
+                
+                <!-- Header -->
+                <control type="label">
+                    <left>30</left>
+                    <width>390</width>
+                    <posy>18</posy>
+                    <font>MediumBold</font>
+                    <label>5</label>
+                    <textcolor>PanelWhite100</textcolor>
+                </control>
+<!-- Suppression Label ICI --> 
+                <control type="label" id="500">
+                    <visible>!stringcompare(Window.Property(groupname),movieshub) + !stringcompare(Window.Property(groupname),episodeshub)</visible>
+                    <left>480</left>
+                    <width>800</width>
+                    <posy>18</posy>
+                    <font>MediumBold</font>
+                    <textcolor>PanelWhite100</textcolor>
+                </control>
+                <control type="label">
+                    <visible>stringcompare(Window.Property(groupname),movieshub)</visible>
+                    <left>480</left>
+                    <width>800</width>
+                    <posy>18</posy>
+                    <label>31780</label>
+                    <font>MediumBold</font>
+                    <textcolor>PanelWhite100</textcolor>
+                </control>
+                <control type="label">
+                    <visible>stringcompare(Window.Property(groupname),episodeshub)</visible>
+                    <left>480</left>
+                    <width>800</width>
+                    <posy>18</posy>
+                    <label>31781</label>
+                    <font>MediumBold</font>
+                    <textcolor>PanelWhite100</textcolor>
+                </control>
+<!-- Suppression Label ICI -->    
+            </control>
+        </control>
+        <!--<include>Def9000SettingsMenu</include>-->
+        <!-- 404, for setting custom property -->
+        <control type="button" id="404">
+            <visible>False</visible>
+            <left>-100000</left>
+            <top>-100000</top>
+            <width>1</width>
+            <height>1</height>
+            <onclick>noop</onclick>
+        </control>
+    </controls>
+</window>

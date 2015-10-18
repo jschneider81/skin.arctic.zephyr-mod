@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<includes>
+	<include name="View_156_Cycle_Info_Left">
+		<animation effect="fade" start="0" end="100" delay="900" time="200" reversible="false">Focus</animation>
+		<control type="label">
+			<posx>-40</posx>
+			<width>550</width>
+			<height>58</height>
+			<font>SmallBold</font>
+			<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
+			<textcolor>White</textcolor>
+		</control>
+		<control type="textbox">
+			<posx>-30</posx>
+			<posy>70</posy>
+			<width>555</width>
+			<height>255</height>
+			<align>left</align>
+			<font>Mini</font>
+			<label>$INFO[ListItem.Plot]</label>
+			<textcolor>Dark2</textcolor>
+			<shadowcolor>00000000</shadowcolor>
+			<visible>!substring(ListItem.Path,videodb://movies/sets,left)</visible>
+		</control>	
+		<control type="label">
+			<posx>-30</posx>
+			<posy>70</posy>
+			<width>555</width>
+			<height>255</height>
+			<align>center</align>
+			<font>SmallBold2</font>
+			<label>20457</label>
+			<textcolor>Dark2</textcolor>
+			<shadowcolor>00000000</shadowcolor>
+			<visible>substring(ListItem.Path,videodb://movies/sets,left)</visible>
+		</control>			
+		<control type="label">
+			<posx>-30</posx>
+			<posy>310</posy>
+			<width>555</width>
+			<font>View156</font>
+			<label>$INFO[ListItem.Genre]</label>
+			<textcolor>View156Genre</textcolor>
+		</control>
+		
+					<control type="image">        
+						            <posx>510</posx>
+        							   <posy>15</posy>
+      							   <width>32</width>
+            						   <height>32</height>
+						            <aspectratio aligny="top">keep</aspectratio>         
+						            <texture>$VAR[PosterPercentWatchedBack]</texture>
+						            <visible>!stringcompare(ListItem.Label,..) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs)</visible>
+						            <animation effect="fade" start="0" end="100" delay="900" time="200" reversible="false">Focus</animation>
+						  </control>
+						        <control type="image">        
+						            <posx>512</posx>
+        							   <posy>17</posy>
+      							   <width>28</width>
+            						   <height>28</height>
+						            <aspectratio aligny="top">keep</aspectratio>         
+						            <texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						            <visible>!stringcompare(ListItem.Label,..) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs)</visible>
+						            <animation effect="fade" start="0" end="100" delay="900" time="200" reversible="false">Focus</animation>
+						  </control>
+	</include>
+	
+	<include name="View_156_Cycle_Info_Right">
+		<animation effect="fade" start="0" end="100" delay="900" time="200" reversible="false">Focus</animation>
+		<control type="label">
+			<posx>-40</posx>
+			<width>550</width>
+			<height>58</height>
+			<align>right</align>
+			<font>SmallBold</font>
+			<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
+			<textcolor>White</textcolor>
+		</control>
+		<control type="textbox">
+			<posx>-55</posx>
+			<posy>70</posy>
+			<width>555</width>
+			<height>255</height>
+			<align>right</align>
+			<font>Mini</font>
+			<label>$INFO[ListItem.Plot]</label>
+			<textcolor>Dark2</textcolor>
+			<shadowcolor>00000000</shadowcolor>
+			<visible>!substring(ListItem.Path,videodb://movies/sets,left)</visible>
+		</control>
+		<control type="label">
+			<posx>-55</posx>
+			<posy>70</posy>
+			<width>555</width>
+			<height>255</height>
+			<align>center</align>
+			<font>SmallBold2</font>
+			<label>20457</label>
+			<textcolor>Dark2</textcolor>
+			<shadowcolor>00000000</shadowcolor>
+			<visible>substring(ListItem.Path,videodb://movies/sets,left)</visible>
+		</control>
+		<control type="label">
+			<posx>-55</posx>
+			<posy>310</posy>
+			<width>555</width>
+			<align>right</align>
+			<font>View156</font>
+			<label>$INFO[ListItem.Genre]</label>
+			<textcolor>View156Genre</textcolor>
+		</control>
+		
+							<control type="image">        
+						            <posx>-70</posx>
+        							   <posy>15</posy>
+      							   <width>32</width>
+            						   <height>32</height>
+						            <aspectratio aligny="top">keep</aspectratio>         
+						            <texture>$VAR[PosterPercentWatchedBack]</texture>
+						            <visible>!stringcompare(ListItem.Label,..) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs)</visible>
+						            <animation effect="fade" start="0" end="100" delay="900" time="200" reversible="false">Focus</animation>
+						  </control>
+						        <control type="image">        
+						            <posx>-68</posx>
+        							   <posy>17</posy>
+      							   <width>28</width>
+            						   <height>28</height>
+						            <aspectratio aligny="top">keep</aspectratio>         
+						            <texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						            <visible>!stringcompare(ListItem.Label,..) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs)</visible>
+						            <animation effect="fade" start="0" end="100" delay="900" time="200" reversible="false">Focus</animation>
+						  </control>
+	</include>	
+	
+	<include name="View_156_Cycle">
+		<control type="group">
+			<include>Animation.Common</include>
+			<visible>Control.IsVisible(156)</visible>			
+			<visible>!Window.IsVisible(DialogVideoInfo.xml) + !Window.IsVisible(DialogAlbumInfo.xml)</visible>
+			<control type="panel" id="156">
+			<visible>Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)</visible>
+				<left>85</left>
+				<top>175</top>
+				<width>1900</width>
+				<height>750</height>
+				<onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
+				<onright>60</onright>
+				<onup>156</onup>
+				<ondown>156</ondown>
+				<preloaditems>2</preloaditems>
+				<pagecontrol>60</pagecontrol>
+				<viewtype label="Cycle">list</viewtype>
+				 <scrolltime tween="quadratic">400</scrolltime>						
+				<itemlayout width="300" height="375">
+					<control type="group">
+						<posx>0</posx>	
+						<posy>0</posy>
+						<control type="image">
+							<posx>0</posx>
+							<posy>4</posy>
+							<width>246</width>
+							<height>358</height>
+							<texture border="8">skins/circle/common/white8.png</texture>
+						</control>
+						<control type="image">
+							<posx>4</posx>
+							<posy>8</posy>
+							<width>238</width>
+							<height>350</height>
+							<texture background="true">$VAR[PosterImage]</texture>
+							<aspectratio>stretch</aspectratio>
+						</control>
+
+						<control type="image">
+							<posx>194</posx>
+							<posy>0</posy>
+							<width>56</width>
+							<height>56</height>
+							<texture colordiffuse="$VAR[ColorHighlight]">skins/circle/views/wall/watched_bg.png</texture>
+							<include>WatchedOverlayVisibility</include>
+						</control>
+						        <control type="image">        
+						            <posx>220</posx>
+        							   <posy>1</posy>
+      							   <width>28</width>
+            						   <height>28</height>
+						            <aspectratio aligny="top">keep</aspectratio>         
+						            <texture>$VAR[PosterPercentWatched]</texture>
+						            <visible>!stringcompare(ListItem.Label,..) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs)</visible>
+						            <animation effect="slide" start="0" end="64" time="0" condition="Container.Content(Seasons)">Conditional</animation>
+						  </control>
+
+					</control>
+				</itemlayout>
+
+				<focusedlayout width="300" height="375">
+					<!-- Left Poster Info -->
+					<control type="group">
+						<posx>0</posx>	
+						<posy>0</posy>
+						<visible>Container(156).Column(0) | Container(156).Column(1) | Container(156).Column(2)</visible>						
+						<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">UnFocus</animation>
+						<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">Hidden</animation>
+						<control type="image">
+							<posx>0</posx>
+							<posy>-4</posy>
+							<width>866</width>
+							<height>375</height>
+							<texture colordiffuse="View156" border="8">skins/circle/common/white8.png</texture>							
+							<animation effect="zoom" start="0,47,1,368" end="23,47,846,368" delay="600" time="300" reversible="false">Focus</animation>
+						</control>
+						<control type="image">
+							<posx>0</posx>
+							<posy>-4</posy>
+							<width>877</width>
+							<height>81</height>
+							<texture border="0,0,14,0" colordiffuse="$VAR[ColorHighlight]" flipy="true">skins/circle/buttons/select/right-11.png</texture>
+							<animation effect="zoom" start="0,41,1,64" end="23,41,857,64" delay="600" time="300" reversible="false">Focus</animation>
+						</control>
+						<!-- Info -->
+						<control type="group">
+							<posx>304</posx>
+							<posy>-6</posy>
+							<include>View_156_Cycle_Info_Left</include>
+						</control>
+					</control>
+					<!-- Right Poster Info -->
+					<control type="group">
+						<posx>-620</posx>	
+						<posy>0</posy>
+						<visible>Container(156).Column(3) | Container(156).Column(4) | Container(156).Column(5)</visible>
+						<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">UnFocus</animation>
+						<animation effect="fade" start="0" end="0" delay="0" time="50" reversible="false">Hidden</animation>
+						<control type="image">
+							<posx>0</posx>
+							<posy>-4</posy>
+							<width>866</width>
+							<height>375</height>
+							<texture colordiffuse="View156" border="8">skins/circle/common/white8.png</texture>
+							<animation effect="zoom" start="866,47,1,368" end="-866,47,846,368" delay="600" time="300" reversible="false">Focus</animation>
+						</control>
+						<control type="image">
+							<posx>-11</posx>
+							<posy>-4</posy>
+							<width>877</width>
+							<height>81</height>
+							<texture border="14,0,0,0" colordiffuse="$VAR[ColorHighlight]" flipy="true" flipx="true">skins/circle/buttons/select/right-11.png</texture>
+							<animation effect="zoom" start="866,47,1,64" end="-866,47,857,64" delay="600" time="300" reversible="false">Focus</animation>
+						</control>
+						<!-- Info -->
+						<control type="group">
+							<posx>90</posx>
+							<posy>-6</posy>
+							<include>View_156_Cycle_Info_Right</include>
+						</control>
+					</control>
+					<control type="group">
+						<posx>0</posx>
+						<posy>0</posy>
+						<animation effect="zoom" start="100" end="105" time="250" center="152,212">Focus</animation>
+						<animation effect="zoom" start="105" time="100" center="152,212">UnFocus</animation>
+						<control type="image">
+							<posx>0</posx>
+							<posy>4</posy>
+							<width>246</width>
+							<height>358</height>
+							<texture border="8" colordiffuse="$VAR[ColorHighlight]">skins/circle/common/white8.png</texture>
+						</control>
+						<control type="image">
+							<posx>4</posx>
+							<posy>8</posy>
+							<width>238</width>
+							<height>350</height>
+							<texture background="true">$VAR[PosterImage]</texture>
+							<aspectratio>stretch</aspectratio>
+						</control>
+
+					</control>
+				</focusedlayout>
+
+			</control>
+			<include>Furniture_Scrollbar</include>
+		</control>
+	</include>
+
+</includes>

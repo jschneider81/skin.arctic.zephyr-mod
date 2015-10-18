@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="window" id="1200">
+    <defaultcontrol always="true">9500</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <controls>
+        <include>GlobalBackground</include>
+        <include>Furniture_Header</include>
+        <include>Furniture_NowPlaying</include>
+        <include>Furniture_Clock</include>
+        <include>Furniture_Weather</include>
+        <control type="group">
+            <control type="panel" id="9500">
+                <left>SidePad</left>
+                <right>SidePad</right>
+                <top>380</top>
+                <height>340</height>
+                <onup>9500</onup>
+                <ondown>9500</ondown>
+                <onleft>9500</onleft>
+                <onright>9500</onright>
+                <orientation>vertical</orientation>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="160" width="160">
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>$INFO[ListItem.Thumb]</texture>
+                    </control>
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>transparency/light/50.png</texture>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>[StringCompare(ListItem.Label,Skin.String(transparency.name)) + !StringCompare(ListItem.Label2,selected)]</visible>
+                        <visible>!StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png) | IsEmpty(Skin.String(transparency.name))</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/checkmark.png</texture>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/new.png</texture>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="160" width="160">
+               
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>$INFO[ListItem.Thumb]</texture>
+                        <bordertexture colordiffuse="$VAR[ColorHighlight]">common/white.png</bordertexture>
+                        <bordersize>7</bordersize>
+                    </control>
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>transparency/light/50.png</texture>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                        <bordertexture colordiffuse="$VAR[ColorHighlight]">common/white.png</bordertexture>
+                        <bordersize>7</bordersize>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>[StringCompare(ListItem.Label,Skin.String(transparency.name)) + !StringCompare(ListItem.Label2,selected)]</visible>
+                        <visible>!StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png) | IsEmpty(Skin.String(transparency.name))</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/checkmark.png</texture>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/new.png</texture>
+                    </control>
+                </focusedlayout>
+                <content>
+                    <item id="0"> <!-- default -->
+                        <onclick>Skin.Reset(transparency.name)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>special://skin/extras/icons/error.png</thumb>
+                        <label>571</label>
+                    </item>                    
+                    <item id="2"> <!-- 0% -->
+                        <onclick>Skin.SetString(transparency.name,FFffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/0.png</thumb>
+                        <label>FFffffff</label>
+                    </item>
+                    <item id="3"> <!-- 5% -->
+                        <onclick>Skin.SetString(transparency.name,F2ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/5.png</thumb>
+                        <label>F2ffffff</label>
+                    </item>  
+                    <item id="4"> <!-- 10% -->
+                        <onclick>Skin.SetString(transparency.name,E6ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/10.png</thumb>
+                        <label>E6ffffff</label>
+                    </item>  
+                    <item id="5"> <!-- 15% -->
+                        <onclick>Skin.SetString(transparency.name,D9ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/15.png</thumb>
+                        <label>D9ffffff</label>
+                    </item>
+                    <item id="6"> <!-- 20% -->
+                        <onclick>Skin.SetString(transparency.name,CCffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/20.png</thumb>
+                        <label>CCffffff</label>
+                    </item> 
+                    <item id="7"> <!-- 25% -->
+                        <onclick>Skin.SetString(transparency.name,BFffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/25.png</thumb>
+                        <label>BFffffff</label>
+                    </item>
+                    <item id="8"> <!-- 30% -->
+                        <onclick>Skin.SetString(transparency.name,B3ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/30.png</thumb>
+                        <label>B3ffffff</label>
+                    </item>  
+                    <item id="9"> <!-- 35% -->
+                        <onclick>Skin.SetString(transparency.name,A6ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/35.png</thumb>
+                        <label>A6ffffff</label>
+                    </item> 
+                    <item id="10"> <!-- 40% -->
+                        <onclick>Skin.SetString(transparency.name,99ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/40.png</thumb>
+                        <label>99ffffff</label>
+                    </item>  
+                    <item id="11"> <!-- 45% -->
+                        <onclick>Skin.SetString(transparency.name,8Cffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/45.png</thumb>
+                        <label>8Cffffff</label>
+                    </item>
+                    <item id="12"> <!-- 50% -->
+                        <onclick>Skin.SetString(transparency.name,80ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/50.png</thumb>
+                        <label>80ffffff</label>
+                    </item> 
+                    <item id="13"> <!-- 55% -->
+                        <onclick>Skin.SetString(transparency.name,73ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/55.png</thumb>
+                        <label>73ffffff</label>
+                    </item> 
+                    <item id="14"> <!-- 60% -->
+                        <onclick>Skin.SetString(transparency.name,66ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/60.png</thumb>
+                        <label>66ffffff</label>
+                    </item>   
+                    <item id="15"> <!-- 65% -->
+                        <onclick>Skin.SetString(transparency.name,59ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/65.png</thumb>
+                        <label>59ffffff</label>
+                    </item> 
+                    <item id="16"> <!-- 70% -->
+                        <onclick>Skin.SetString(transparency.name,4Dffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/70.png</thumb>
+                        <label>4Dffffff</label>
+                    </item>  
+                    <item id="17"> <!-- 75% -->
+                        <onclick>Skin.SetString(transparency.name,40ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/75.png</thumb>
+                        <label>40ffffff</label>
+                    </item> 
+                    <item id="18"> <!-- 80% -->
+                        <onclick>Skin.SetString(transparency.name,33ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/80.png</thumb>
+                        <label>33ffffff</label>
+                    </item>          
+                    <item id="19"> <!-- 85% -->
+                        <onclick>Skin.SetString(transparency.name,26ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/85.png</thumb>
+                        <label>26ffffff</label>
+                    </item>    
+                    <item id="20"> <!-- 90% -->
+                        <onclick>Skin.SetString(transparency.name,1Affffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/90.png</thumb>
+                        <label>1Affffff</label>
+                    </item>    
+                    <item id="21"> <!-- 95% -->
+                        <onclick>Skin.SetString(transparency.name,0Dffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/95.png</thumb>
+                        <label>0Dffffff</label>
+                    </item>   
+                    <item id="22"> <!-- 100% -->
+                        <onclick>Skin.SetString(transparency.name,00ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/light/100.png</thumb>
+                        <label>00ffffff</label>
+                    </item>                                
+              </content>
+            </control>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,320 @@
+[B]3.1.2[/B]
+Skinned the global search context menu.
+Add file type icon to song info dialog.
+Add support for Feedreader.
+Add ClearArt on NextUp Notification.
+Add possibility to customise shutdown menu.
+Add view fanart button to artist/album info dialog.
+Add Youtube integration in artist/album info.
+Hide discography button in artist/album info when no content.
+
+Thanks braz.
+
+[B]3.1.1[/B]
+Add arrows to ExtendedInfo windows.
+Add arrows to addon info.
+Add Landscape (Fanart) and Landscape (Thumb) options in aspect ratio settings to show fanart or thumb on widgets. 
+Add media flags to global search info dialog.
+
+[B]3.1.0[/B]
+Add menu in Global Search (when pressing left) to do a new search and access to search settings.
+Add support to search EPG in Global Search.
+Global Search info dialog replaced to pull from local library instead of TMDB.
+Fix musicvideo search with Global Search.
+Skinshortcut is now integrated in skin settings.
+Updated skinshortcuts support for new widgets implementation. It's now possible to select any library node, playlist, source or plugin as a widget automatically, and you can additionally define custom widgets, such as PVR information, weather conditions and so forth.
+Add an option to choose widget icon aspect ratio.
+Add new weather widget in classic and vertical views.
+Add extra menu on video info to download artworks, add items to playlist and show fanart.
+Add photos for actor on info dialog.
+Add Big Icons view for programs and addons.
+Changed extended progress icon.
+Changed info overlay to show in 5 seconds.
+Many bugs fix.
+
+Big Thanks to Braz.
+
+[B]3.0.1[/B]
+Hopefully fix weather fanart widget bug.
+Fix ExtraInfo LowList bug.
+Fix Content Provider bug.
+Add mouse warning.
+Fix touch lockout.
+Fix Now Playing.
+Add new color customizer with possibility to set custom color in hex value (from braz's mod).
+
+[B]3.0.0[/B]
+Add subtitles sync and next subtitle settings on OSD.
+
+[B]2.0.9[/B]
+Fix indicators on Gallery view.
+Fix "Extra Info" show two times on Large Banner view.
+Minnor changes on Hubs.
+Add media flags icons on Hubs.
+Add icons for UHD contents.
+Episodes Labels replaced like SxxExx.
+
+[B]2.0.8[/B]
+Fix scroll up on Cycle and Banners Infos views (Thanks to jdoo).
+Fix tvshow hub item label.
+Fix overlay showing in wrong spot.
+Fix kaitoast.
+Fix skin init stuff.
+
+[B]2.0.7[/B]
+Replace Sript Toolbox by Skin Helper Service to import/export all skin settings (better). Skin Helper Service is needed.
+Add possibility to change home menu transparency in skin settings.
+Add possibility to change Fanarts transparency in skin settings.
+
+[B]2.0.6[/B]
+Add option in skin settings to show or not medias path on videos infos.
+Add possibility to show Now Playing banner with or without poster in skin settings.
+Add top logo for Youtube and Dailymotion.
+Fix display with next recording PVR.
+Fix player seeking.
+Fix in French language file.
+Fix Fixed the SD logo was displayed on no video items.
+
+[B]2.0.5[/B]
+Use skin helper service for sets info (can use either that or skin.info).
+Music playlist or file for startup playlist.
+Use background fallback fanart when disable fanart is on.
+Fix RSS for vertical menu.
+Fix label width PVR header.
+Add Youtube Search for Artists, Albums and Songs on Infos screen (Thanks to Jurialmunkey for his help).
+Add possibility to play Album on song infos (Script PlayAlbum is needed).
+
+[B]2.0.4[/B]
+Add support for Cinema Vision add-on.
+Add new view Fanart Thumbs.
+Add move and delete buttons next to label in customisation screen.
+Fix resume indicator not displayed on many views.
+
+[B]2.0.3[/B]
+Add an option in skin settings to choose between Total/UnWatched/Watched episodes displayed on TV Shows.
+Add possibility to play album on album info screen (Script PlayAlbum is needed).
+Minnor fix in plot overlay.
+
+[B]2.0.2[/B]
+Fix some color vars for alternate colours.
+Fix hub items labels in skin settings for localisation.
+Fix scaling issue of MyPVRGuide icon.
+Fix in Cycle View.
+Add highlight the first letter while scrolling when header is disabled.
+Add possibility to import/export all skin settings in extras menu of skin settings (Script Toolbox is needed).
+Change Live Channels view for progress bar.
+-- still todo: PVROSDChannels
+
+[B]2.0.1[/B]
+Add date/time was last checked for addons updates.
+Add translation for fast forward/rewind.
+Add possibility to enable or not ClearArt on videos infos in skin settings.
+Add possibility to enable or not CDArt on movies infos in skin settings.
+Add possibility to enable or not Studios logos on tv shows infos in skin settings.
+Add missing default icons.
+Improving all default icons with better resolution.
+Remove finish time on videos infos (no longer necessary with flags icons).
+Fix icons flags not showed on others views when Big Wall view is enabled.
+
+[B]2.0.0[/B]
+Fix infos songs with Dark layouts.
+Fix for Isenguard.
+
+[B]1.7.4[/B]
+Many fixes with Fallback Arial font.
+Fix plot overlay on video infos.
+Fix Extrathumbs on TV Shows.
+Fix channels icon in PVR OSD.
+Add flat extendedinfo and progress indicators matches theme highlight.
+Add ClearArt on video infos.
+Add new Banner Extended View.
+
+[B]1.7.3[/B]
+Fix clock display.
+Fix fanart info dimensions.
+Move poster and fanart infos to a params includes (standardised across skin).
+Remove auto close music osd visualisation to prevent music stop bug.
+Make full wall default rather than extra info for icons view.
+Remove now unused weather font.
+Add Overlay plot after 3 second delay option in side menu (Press down from info to show plot overlay).
+Add support for ExtraThumbs. Activate this feature in skin settings to show slideshow on video info.
+Add go back to fullscreen button in context menu when video is played in background.
+
+[B]1.7.2[/B]
+Fix up some infos for sets.
+New music osd side pane with playlist.
+Fix Next Aired windows.
+Next Aired now horizontal and use params.
+Updates to Global Search, side buttons let jump to library content, horizontal movement and use params.
+Add new Circle View (inspired by jurialmunkey and Vaneska from Cycle skin).
+
+[B]1.7.1[/B]
+Global search updates.
+Add globalsearch and extendedinfo as dependencies.
+Global search info launches extendedinfo.
+Add overlay for info fullscreenvideo pvr.
+
+Isengard work continues :
+-- Header Labels.
+-- Change My Visualisation.
+-- Fix Music OSD Playlist.
+-- Fix EPG Timeline OSD.
+
+
+[B]1.7.0[/B]
+Add Big/Small Wall View with possibility to show/hide informations in view settings (inspired by im85288 mod).
+Changes Weather Widget on vertical home menu.
+New weather screen.
+
+Isengard work begins :
+-- Added missing default icons.
+-- Add button id9 to AddonBrowser.
+-- DialogPVRChannelManager ids.
+-- DialogPVRTimerSettings id2,14.
+-- Seekbar follows adaptive seek.
+-- Seekbar shows seek offset.
+
+[B]1.6.3[/B]
+Fix finish time flag icon appear in TV Show views.
+New view for PVR Channels.
+Displays movies duration in hours and minutes instead of only minutes while navigating in Movies / TV Shows libraries. Script Duration Addon is needed.
+Add big icon to EPG.
+Fix Weather not displayed correctly in some cases.
+
+[B]1.6.2[/B]
+Fix some home screen weather/now-playing visibility.
+New OSD buttons for Music OSD from original skin.
+New arrow for finish time on OSD and Video Info from original skin.
+Changes in Music Artworks. Only one path is necessary for ClearLogo and CDArt. Better integration with cdART Manager addon.
+
+[B]1.6.1[/B]
+Replace unwatched episodes by total episodes on TV Shows views.
+Add finish time flag icon.
+Cleanup all PNG media flags.
+Minor changes on OSD.
+
+[B]1.6.0[/B]
+Fix now playing with dark layout.
+Fix startup screen with dark layout.
+Add media flags icons for widgets on vertical home menu.
+Add media flags icons for widgets on classic home menu.
+Add possibilty to use originals or flat weather icons in widget skin settings.
+Minor changes with Weather Widget on vertical home menu.
+Add new Weather Widget on normal and classic home menu.
+
+[B]1.5.1[/B]
+Fix T9 Highlight.
+Fix bug in file browser for round icons.
+Fix lyrics and some music visualisation stuff.
+Fix empty include in customcolor.
+
+[B]1.5.0[/B]
+Update transifex translations.
+Add weather furniture.
+Remove some redundant skin settings.
+Add Light with Dark Dialogs and Light with Light Dialogs colours scheme.
+New MusicOSD/Visualisation Info.
+Change font on vertical home menu
+Minor bug fixes.
+
+[B]1.4.5[/B]
+Add Weather widget on vertical home menu.
+Fix favourites widget on vertical home menu.
+Same behaviour as other home screen for backgrounds.
+Fix NextAired on vertical home menu.
+Fix missing posters on container sets.
+Fix Extendedinfo browser on home menu.
+
+[B]1.4.4[/B]
+Fix overlay icons.
+
+[B]1.4.3[/B]
+Updates to ExtendedInfo Browser menus.
+Fix header length for home when clearlogo enabled.
+Add Album and Movie / TV Show thumbs in NowPlaying.
+Add icons buttons to ExtendedInfo Script.
+Add indicator on vertical menu when submenu exist.
+
+[B]1.4.2[/B]
+ExtendedInfo Browser and T9 search.
+Add support for Youtube Browser Addon.
+Add Vertical home menu.
+Add Vertical menu music.
+
+[B]1.4.1[/B]
+Fix tag line over disc cover.
+Fix View Thumbnail problem with plugins.
+Extended info focus fix.
+Fix missing indicators on recordings.
+Add support for Artists Logo (need to set path of ClearLogo directory in skin settings). ClearLogo can be downloaded here : https://fanart.tv/
+Add support for Albums Disc (need to set path of CDArt directory in skin settings). CDArt can be downloaded here : https://fanart.tv/
+
+[B]1.4.0[/B]
+New videoinfo and extendedinfo style.
+New Album/Artist info style.
+New Album/Artist info style.
+New PVR info style.
+New Addons/Programs info style.
+Plex Banners replaced by Banner Wall.
+Add Big Wide Style.
+Ability to use playlists as background for home.
+Audio Language flags courtesy of Crssi.
+Advanced header text logic courtesy of Crssi.
+Better header icon logic thanks to Crssi.
+Add Missig OSD icons for Music.
+Fix Lyrics screen.
+New NextUp Notifications.
+
+[B]1.3.9[/B]
+Minor bug fixes.
+Add Plex Banners and Gallery Views by im85288.
+Show list of movies include in sets with posters (up to 14 movies). Addon skin.info.service is required.
+
+
+[B]1.3.8[/B]
+More improvements to support Next Up Notifications addon by im85288..
+New icons indicator highlighted by selected color.
+New Thumbnails View.
+
+[B]1.3.7[/B]
+Minor bug fixes.
+Add support for Next Up Notifications addon by im85288.
+
+[B]1.3.6[/B]
+New logo.
+New Splash Screen.
+Minor bug fixes.
+Compressed textures for better installation.
+
+[B]1.3.5[/B]
+Add Start Time and End Time on Info Screen.
+Several display fixes.
+Updated language files from Transifex.
+Fix globalsearch not being able to focus actors.
+Add globalsearch arrows to show more content.
+Fix home nowplaying animation.
+
+[B]1.3.4[/B]
+Add DiscArt support.
+Add StudioArt support.
+Various labels replaced with icons.
+
+[B]1.3.3[/B]
+Updated with new fix of Arctic Zephir
+Add checkmark, in progress and new icons in BigList view.
+Add flags icons while playing Music.
+
+[B]1.3.2[/B]
+Add icon flags Audio Languages and Subtitles Languages on Video Infos.
+Add icon flags for video codecs, audio codecs, ratio, video sources and audio sources on Video Infos.
+Updated french translation for Arctic Zephir settings.
+
+[B]1.3.1[/B]
+Add icon flags for video codecs, audio codecs, ratio, video sources and audio sources on View and OSD.
+Add icon genres for movies (however the View Thumbnails does not work anymore with movies, shows and music, only with movies/musics genres).
+Replace icons checkmark, in progress and new.
+Remove rating (because I doesn't like, I prefer to make my own idea of ​​the movie).
+Updated french translation for Arctic Zephir settings.
+
+[B]1.3.0[/B]
+Initial Commit

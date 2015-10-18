@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="window" id="1203">
+    <defaultcontrol always="true">9500</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <controls>
+        <include>GlobalBackground</include>
+        <include>Furniture_Header</include>
+        <include>Furniture_NowPlaying</include>
+        <include>Furniture_Clock</include>
+        <include>Furniture_Weather</include>
+        <control type="image">
+            <centerleft>40</centerleft>
+            <centertop>537</centertop>
+            <width>16</width>
+            <height>16</height>
+            <texture colordiffuse="Dark1" flipx="true">common/arrow-small-right.png</texture>
+        </control>
+        <control type="image">
+            <centerright>40</centerright>
+            <centertop>537</centertop>
+            <width>16</width>
+            <height>16</height>
+            <texture colordiffuse="Dark1" flipx="false">common/arrow-small-right.png</texture>
+        </control>
+        <control type="group">
+            <control type="panel" id="9500">
+                <left>75</left>
+                <right>75</right>
+                <top>208</top>
+                <height>664</height>
+                <onup>9500</onup>
+                <ondown>9500</ondown>
+                <onleft>9500</onleft>
+                <onright>9500</onright>
+                <orientation>horizontal</orientation>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="332" width="590">
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>$INFO[ListItem.Thumb]</texture>
+                    </control>
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>transparency/darkfanart/20.png</texture>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>[StringCompare(ListItem.Label,Skin.String(transparencyfanart.name)) + !StringCompare(ListItem.Label2,selected)]</visible>
+                        <visible>!StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png) | IsEmpty(Skin.String(transparencyfanart.name))</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/checkmark.png</texture>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/new.png</texture>
+                    </control>
+                </itemlayout>
+                
+                <focusedlayout height="332" width="590">               
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>$INFO[ListItem.Thumb]</texture>
+                        <bordertexture colordiffuse="$VAR[ColorHighlight]">common/white.png</bordertexture>
+                        <bordersize>7</bordersize>
+                    </control>
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture>transparency/darkfanart/20.png</texture>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                        <bordertexture colordiffuse="$VAR[ColorHighlight]">common/white.png</bordertexture>
+                        <bordersize>7</bordersize>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>[StringCompare(ListItem.Label,Skin.String(transparencyfanart.name)) + !StringCompare(ListItem.Label2,selected)]</visible>
+                        <visible>!StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png) | IsEmpty(Skin.String(transparencyfanart.name))</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/checkmark.png</texture>
+                    </control>
+                    <control type="image">
+                        <centerright>24</centerright>
+                        <centertop>24</centertop>
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <visible>StringCompare(ListItem.Thumb,special://skin/extras/icons/error.png)</visible>
+                        <texture colordiffuse="$VAR[ColorHighlight]">indicator/new.png</texture>
+                    </control>
+                </focusedlayout>
+                <content>
+                    <item id="0"> <!-- default -->
+                        <onclick>Skin.Reset(transparencyfanart.name)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>special://skin/extras/icons/error.png</thumb>
+                        <label>571</label>
+                    </item> 
+                    <item id="2"> <!-- 0% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,00ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/0.png</thumb>
+                        <label>00ffffff</label>
+                    </item>        
+                    <item id="3"> <!-- 5% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,0Dffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/5.png</thumb>
+                        <label>0Dffffff</label>
+                    </item>           
+                    <item id="4"> <!-- 10% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,1Affffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/10.png</thumb>
+                        <label>1Affffff</label>
+                    </item> 
+                    <item id="5"> <!-- 15% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,26ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/15.png</thumb>
+                        <label>26ffffff</label>
+                    </item>   
+                    <item id="6"> <!-- 20% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,33ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/20.png</thumb>
+                        <label>33ffffff</label>
+                    </item> 
+                    <item id="7"> <!-- 25% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,40ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/25.png</thumb>
+                        <label>40ffffff</label>
+                    </item>            
+                    <item id="8"> <!-- 30% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,4Dffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/30.png</thumb>
+                        <label>4Dffffff</label>
+                    </item>  
+                    <item id="9"> <!-- 35% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,59ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/35.png</thumb>
+                        <label>59ffffff</label>
+                    </item>
+                    <item id="10"> <!-- 40% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,66ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/40.png</thumb>
+                        <label>66ffffff</label>
+                    </item> 
+                    <item id="11"> <!-- 45% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,73ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/45.png</thumb>
+                        <label>73ffffff</label>
+                    </item> 
+                     <item id="12"> <!-- 50% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,80ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/50.png</thumb>
+                        <label>80ffffff</label>
+                    </item>
+                    <item id="13"> <!-- 55% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,8Cffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/55.png</thumb>
+                        <label>8Cffffff</label>
+                    </item> 
+                    <item id="14"> <!-- 60% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,99ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/60.png</thumb>
+                        <label>99ffffff</label>
+                    </item>  
+                    <item id="15"> <!-- 65% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,A6ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/65.png</thumb>
+                        <label>A6ffffff</label>
+                    </item>
+                    <item id="16"> <!-- 70% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,B3ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/70.png</thumb>
+                        <label>B3ffffff</label>
+                    </item>
+                    <item id="17"> <!-- 75% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,BFffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/75.png</thumb>
+                        <label>BFffffff</label>
+                    </item> 
+                    <item id="18"> <!-- 80% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,CCffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/80.png</thumb>
+                        <label>CCffffff</label>
+                    </item> 
+                    <item id="19"> <!-- 85% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,D9ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/85.png</thumb>
+                        <label>D9ffffff</label>
+                    </item>
+                    <item id="20"> <!-- 90% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,E6ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/90.png</thumb>
+                        <label>E6ffffff</label>
+                    </item>  
+                    <item id="21"> <!-- 95% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,F2ffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/95.png</thumb>
+                        <label>F2ffffff</label>
+                    </item>      
+                    <item id="22"> <!-- 100% -->
+                        <onclick>Skin.SetString(transparencyfanart.name,FFffffff)</onclick>
+                        <onclick>Close</onclick>
+                        <thumb>transparency/darkfanart/100.png</thumb>
+                        <label>FFffffff</label>
+                    </item>      
+              </content>
+            </control>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="Furniture_Scrollbar">
+        <control type="scrollbar" id="60">
+            <onback>50</onback>
+            <centerright>60</centerright>
+            <posy>PosterPad</posy>
+            <height>PosterH</height>
+            <width>8</width>
+            <onleft>50</onleft>
+            <onright condition="!Skin.HasSetting(global.kioskmode)">9000</onright>
+            <texturesliderbackground border="4" colordiffuse="Dark4">scrollbar/scrollv.png</texturesliderbackground>
+            <texturesliderbar border="4" colordiffuse="Dark3">scrollbar/scrollv.png</texturesliderbar>
+            <texturesliderbarfocus border="4" colordiffuse="Dark2">scrollbar/scrollv.png</texturesliderbarfocus>
+            <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+        </control>
+    </include>
+
+<!-- Ajout ICI -->
+    <include name="Furniture_Addons">
+    	     <include>Animation.Common</include>
+    	     <include>Animation.FurnitureFadeInOut</include>
+              <control type="label">          
+                <top>880</top>
+                <left>SidePad</left>
+                <width>PosterH</width>
+                <align>center</align>
+                <textcolor>Dark1</textcolor>
+                <font>SmallBold</font>
+                <label>$LOCALIZE[31751] $INFO[Window.Property(Updated)]</label>
+                <visible>Window.IsVisible(AddonBrowser.xml)</visible>
+            </control>
+    </include>
+
+<!-- Ajout ICI -->
+    <include name="Furniture_Letter_Scrolling">    
+       <control type="group">
+            <top>SidePad</top>
+            <left>SidePad</left>                 
+            <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)</visible>
+            <width>80</width>
+            <height>80</height>
+                <control type="image">
+                    <width>80</width>
+                    <height>80</height>
+                    <texture colordiffuse="Panel" border="8">common/box.png</texture>
+                    <visible>Container.Scrolling</visible>
+                    <visible>!Skin.HasSetting(hide.busydialog) | !Window.IsVisible(DialogBusy.xml)</visible>
+                </control>
+                <control type="label">
+                    <centertop>38</centertop>
+                    <centerleft>40</centerleft>
+                    <width>80</width>
+                    <height>80</height>
+                    <font>LargeBold</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.SortLetter,[UPPERCASE],[/UPPERCASE]]</label>
+                    <textcolor>PanelWhite100</textcolor>
+                    <visible>Container.Scrolling</visible>
+                    <visible>!Skin.HasSetting(hide.busydialog) | !Window.IsVisible(DialogBusy.xml)</visible>
+                    <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                </control>
+        </control>    
+    </include>    
+    
+    
+    <include name="Furniture_Scrollbar_Horizontal">
+        <control type="scrollbar" id="60">
+            <onback>50</onback>
+            
+            <left>SidePad</left>
+            <width>1760</width>
+            <bottom>200</bottom>
+            <orientation>horizontal</orientation>
+            <height>8</height>
+            <onup>50</onup>
+            <ondown condition="!Skin.HasSetting(global.kioskmode)">9000</ondown>
+            <texturesliderbackground border="4" colordiffuse="Dark4">scrollbar/scrollv.png</texturesliderbackground>
+            <texturesliderbar border="4" colordiffuse="Dark3">scrollbar/scrollv.png</texturesliderbar>
+            <texturesliderbarfocus border="4" colordiffuse="Dark2">scrollbar/scrollv.png</texturesliderbarfocus>
+            <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+        </control>
+    </include>
+    
+    
+    <include name="Furniture_ButtonBack">
+        <width>64</width>
+        <height>64</height>
+        <animation type="Focus" reversible="false">
+            <effect type="zoom" start="75" end="100" center="auto" time="200"/>
+        </animation>
+    </include>
+    
+    <include name="Furniture_ButtonBack_Circle">
+        <width>64</width>
+        <height>64</height>
+        <texture colordiffuse="Dark1">common/circle.png</texture>
+    </include>
+    
+<!-- Suppression Flags ICI -->
+
+<!-- Modification ICI -->
+    <variable name="ClearLogoTopVar">
+        <value condition="!IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
+        <value condition="!IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
+        <value condition="!IsEmpty(Container(9500).ListItem.Art(clearlogo))">$INFO[Container(9500).ListItem.Art(clearlogo)]</value>
+        <value condition="!IsEmpty(Container(9500).ListItem.Art(tvshow.clearlogo))">$INFO[Container(9500).ListItem.Art(tvshow.clearlogo)]</value>
+        <value condition="substring(Container.FolderPath,video.youtube)">flags/Youtube_logo.png</value>
+        <value condition="substring(Container.FolderPath,video.dailymotion)">flags/Dailymotion_logo.png</value>
+    </variable>
+    
+    <include name="Furniture_Flags">
+        <control type="grouplist">
+            <visible>!Skin.HasSetting(furniture.flags)</visible>
+            <visible>!Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml)</visible>
+            <visible>!Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml)</visible>
+            <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets) | Control.IsVisible(50)</visible>
+            <visible>!stringcompare(ListItem.Label,..)</visible>
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <left>SidePad</left>
+            <centerbottom>NavBarPad</centerbottom>
+<!-- Modification Taille ICI -->            
+            <width>1435</width>
+<!-- Modification Taille ICI -->            
+            <height>180</height>
+            <orientation>horizontal</orientation>
+            <align>left</align>
+            <itemgap>19</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="group">
+             <centertop>60%</centertop>    
+<!-- Modification Taille ICI -->
+                <width>73</width>
+                <height>50</height>
+                <control type="image" description="button back">
+<!-- Modification Taille ICI -->
+                    <width>73</width>
+                    <height>50</height>
+<!-- Modification Fichier ICI -->
+                    <texture colordiffuse="Dark1">common/cadre.png</texture>
+                    <visible>!substring(ListItem.Path,videodb://movies/sets,left)  + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                    <visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+                </control>
+                <control type="label">
+<!-- Modification Taille ICI -->
+                    <width>73</width>
+                    <height>46</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+<!-- Modification Label ICI -->                    
+                    <label>$VAR[LabelEpisodesSettings2]</label>
+<!-- Modification Police ICI -->
+                    <font>FlagHD</font>
+<!-- Modification Couleur Police ICI -->                    
+                    <textcolor>Dark1</textcolor>                    
+                    <visible>!substring(ListItem.Path,videodb://movies/sets,left) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                    <visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+                </control>
+<!-- Ajout ICI -->                
+                <control type="image">
+                    <width>73</width>
+                    <height>50</height>
+                    <texture colordiffuse="Dark1">$VAR[HDSD]</texture>              
+                    <visible>!substring(ListItem.Path,videodb://movies/sets,left) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                </control>               
+                <control type="image">
+<!-- Modification Taille ICI -->    
+		<centertop>60%</centertop>            
+                    <width>80</width>
+                    <height>120</height>
+<!-- Modification Couleur ICI -->                       
+                    <texture colordiffuse="Dark1">flags/sets.png</texture>
+                    <visible>substring(ListItem.Path,videodb://movies/sets,left)</visible>
+                    <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                </control>                             
+            </control>
+            
+<!-- Ajout Posters Sets ICI -->	 
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.1.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.1.Art(poster))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.2.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.2.Art(poster))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.3.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.3.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.4.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.4.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.5.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.5.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.6.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.6.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.7.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.7.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.8.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.8.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.9.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.9.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.10.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.10.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.11.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.11.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.12.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.12.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.13.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.13.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+			<control type="image">
+				<width>80</width>
+				<height>120</height>
+				<centertop>60%</centertop>
+				<texture diffuse="diffuse/sets.png">$INFO[Window(home).Property(Set.Movie.14.Art(poster))]</texture>
+				<visible>!IsEmpty(Window(home).Property(Set.Movie.14.Art(discart))) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+			</control>
+            
+<!-- Suppression Flagstar ICI -->   
+
+<!-- Suppression Rating ICI -->  
+            
+            <control type="image">
+                <width>48</width>
+                <height>64</height>
+                <centertop>60%</centertop>
+                <texture colordiffuse="Dark1">flags/airing.png</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="label">
+                <width min="128">auto</width>
+                <centertop>60%</centertop>
+                <height>64</height>
+                <align>left</align>
+                <aligny>center</aligny>
+                <label>$VAR[LabelNextAiredDetails]</label>
+                <font>Flag</font>
+                <textcolor>Dark2</textcolor>
+                <visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+
+<!-- Suppression Flag et Ajout ICI -->  
+   	<control type="image">
+                 <width>108</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/aspectratio/aspectratio.png" colordiffuse="Dark1">$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(ListItem.VideoAspect) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+                 <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[ListItem.VideoResolution,flags/resolution/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(ListItem.VideoResolution) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+                <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[ListItem.VideoCodec,flags/video/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(ListItem.VideoCodec) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[ListItem.AudioCodec,flags/audio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(ListItem.AudioCodec) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+             <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[ListItem.AudioChannels,flags/channels/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(ListItem.AudioChannels) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+
+<!-- Ajout Groupe Time ICI -->  
+  <control type="group">
+                <centertop>60%</centertop>
+                <width>162</width>
+                <height>50</height>
+            <control type="image">
+                <width>162</width>
+                <height>50</height>
+                <centertop>50%</centertop>
+                <texture colordiffuse="Dark1">flags/time.png</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!substring(Container.FolderPath,video.vstream) + !substring(Container.FolderPath,video.freplay) + !substring(Container.FolderPath,video.dailymotion) + !substring(Container.FolderPath,video.youtube) + !IsEmpty(ListItem.Duration) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+            <control type="label">
+                <width>162</width>
+                <centertop>46%</centertop>
+                <height>50</height>
+                <posx>65</posx>
+                <aligny>center</aligny>
+                <label>$VAR[MovieDuration]</label>
+                <font>FlagHD</font>
+                <textcolor>Dark1</textcolor>
+                <visible>!substring(Container.FolderPath,video.vstream) + !substring(Container.FolderPath,video.freplay) + !substring(Container.FolderPath,video.dailymotion) + !substring(Container.FolderPath,video.youtube) + !IsEmpty(ListItem.Duration) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            </control>       
+            
+<!-- Ajout Groupe FinishTime ICI -->  
+  <control type="group">
+                <centertop>60%</centertop>
+                <width>162</width>
+                <height>50</height>
+            <control type="image">
+                <width>162</width>
+                <height>50</height>
+                <centertop>50%</centertop>
+                <texture colordiffuse="Dark1">flags/finishtime.png</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!substring(Container.FolderPath,video.vstream) + !substring(Container.FolderPath,video.freplay) + !substring(Container.FolderPath,video.dailymotion) + !substring(Container.FolderPath,video.youtube) + !IsEmpty(ListItem.EndTime) + !substring(ListItem.Path,videodb://movies/sets,left) + !Container.Content(tvshows) + !Container.Content(seasons) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+            <control type="label">
+                <width>162</width>
+                <centertop>46%</centertop>
+                <height>50</height>
+                <posx>61</posx>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.EndTime]</label>
+                <font>FlagHD</font>
+                <textcolor>Dark1</textcolor>
+                <visible>!substring(Container.FolderPath,video.vstream) + !substring(Container.FolderPath,video.freplay) + !substring(Container.FolderPath,video.dailymotion) + !substring(Container.FolderPath,video.youtube) + !substring(ListItem.Path,videodb://movies/sets,left) + !IsEmpty(ListItem.EndTime) + !Container.Content(tvshows) + !Container.Content(seasons) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            </control>              
+            
+            <control type="image">
+<!-- Modification Taille ICI -->
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/3D.png</texture>
+                <visible>ListItem.IsStereoscopic</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+            <control type="image">
+<!-- Modification Taille ICI -->
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/bluray.png</texture>
+                <visible>[substring(ListItem.FilenameAndPath,bluray) | substring(ListItem.FilenameAndPath,bdrip) | substring(ListItem.FilenameAndPath,bd25) | substring(ListItem.FilenameAndPath,bd50)]</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+            <control type="image">
+<!-- Modification Taille ICI -->            
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/hddvd.png</texture>
+                <visible>substring(ListItem.FilenameAndPath,hddvd)</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+            <control type="image">
+<!-- Modification Taille ICI -->            
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/dvd.png</texture>
+                <visible>substring(ListItem.FilenameAndPath,dvd) + !substring(ListItem.FilenameAndPath,hddvd)</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+            <control type="image">
+<!-- Modification Taille ICI -->            
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/imdb.png</texture>
+                <visible>!IsEmpty(ListItem.Top250)</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+        </control>
+    </include>
+    
+    
+    <include name="Furniture_Hub_Flags">
+        <control type="grouplist">
+            <visible>!Skin.HasSetting(furniture.flags)</visible>
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <left>SidePad</left>
+            <centerbottom>NavBarPad</centerbottom>
+<!-- Modification Taille ICI -->            
+            <width>1435</width>
+<!-- Modification Taille ICI -->            
+            <height>180</height>
+            <orientation>horizontal</orientation>
+            <align>left</align>
+            <itemgap>19</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="group">
+             <centertop>60%</centertop>    
+<!-- Modification Taille ICI -->
+                <width>73</width>
+                <height>50</height>
+                <control type="image" description="button back">
+<!-- Modification Taille ICI -->
+                    <width>73</width>
+                    <height>50</height>
+<!-- Modification Fichier ICI -->
+                    <texture colordiffuse="Dark1">common/cadre.png</texture>
+                    <visible>!substring(ListItem.Path,videodb://movies/sets,left)  + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                    <visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+                </control>
+                <control type="label">
+<!-- Modification Taille ICI -->
+                    <width>73</width>
+                    <height>46</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$VAR[HDSD]</label>
+<!-- Modification Police ICI -->
+                    <font>FlagHD</font>
+<!-- Modification Couleur Police ICI -->                    
+                    <textcolor>Dark1</textcolor>                    
+                    <visible>!substring(ListItem.Path,videodb://movies/sets,left) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                    <visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+                </control>
+<!-- Ajout ICI -->                
+                <control type="image">
+                    <width>73</width>
+                    <height>50</height>
+                    <texture colordiffuse="Dark1">$VAR[HDSD]</texture>              
+                    <visible>!substring(ListItem.Path,videodb://movies/sets,left) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                </control>               
+                <control type="image">
+<!-- Modification Taille ICI -->    
+		<centertop>60%</centertop>            
+                    <width>80</width>
+                    <height>120</height>
+<!-- Modification Couleur ICI -->                       
+                    <texture colordiffuse="Dark1">flags/sets.png</texture>
+                    <visible>substring(ListItem.Path,videodb://movies/sets,left)</visible>
+                    <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+                </control>                             
+            </control>     
+            
+<!-- Suppression Flagstar ICI -->   
+
+<!-- Suppression Rating ICI -->   
+            
+<!--  Ajout Flags ICI -->               
+ 	<control type="image">
+                 <width>108</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/aspectratio/aspectratio.png" colordiffuse="Dark1">$INFO[Container(9500).ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(9500).ListItem.VideoAspect) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+                 <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(9500).ListItem.VideoResolution,flags/resolution/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(9500).ListItem.VideoResolution) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+                <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(9500).ListItem.VideoCodec,flags/video/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(9500).ListItem.VideoCodec) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(9500).ListItem.AudioCodec,flags/audio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(9500).ListItem.AudioCodec) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+             <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(9500).ListItem.AudioChannels,flags/channels/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(9500).ListItem.AudioChannels) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+                                    
+            
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/3D.png</texture>
+                <visible>Container(9500).ListItem.IsStereoscopic</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/bluray.png</texture>
+                <visible>[substring(Container(9500).ListItem.FilenameAndPath,bluray) | substring(Container(9500).ListItem.FilenameAndPath,bdrip) | substring(Container(9500).ListItem.FilenameAndPath,bd25) | substring(Container(9500).ListItem.FilenameAndPath,bd50)]</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/hddvd.png</texture>
+                <visible>substring(Container(9500).ListItem.FilenameAndPath,hddvd)</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/dvd.png</texture>
+                <visible>substring(Container(9500).ListItem.FilenameAndPath,dvd) + !substring(Container(9500).ListItem.FilenameAndPath,hddvd)</visible>
+                <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+            
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/imdb.png</texture>
+                <visible>!IsEmpty(Container(9500).ListItem.Top250) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+            </control>
+        </control>
+    </include>
+
+    
+ <include name="Furniture_Home_Flags">
+ 	<!-- Ajout ICI -->   
+        <control type="grouplist">
+            <visible>!Skin.HasSetting(furniture.flags)</visible>
+            <visible>Control.HasFocus(301)</visible>
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <left>SidePad</left>
+            <centerbottom>NavBarPad</centerbottom>
+            <width>1400</width>
+            <height>64</height>
+            <orientation>horizontal</orientation>
+            <align>left</align>
+<!-- Modification Taille ICI -->            
+            <itemgap>15</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="group">
+<!-- Modification Taille ICI -->
+                <width>73</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <control type="image" description="button back">
+<!-- Modification Taille ICI -->                
+                    <width>73</width>
+                    <height>50</height>
+<!-- Modification Fichier ICI -->                
+                    <texture colordiffuse="Dark1">$VAR[HDSD]</texture>
+                    <visible>!substring(Container(301).ListItem.Path,videodb://movies/sets,left) + !StringCompare(Container(300).ListItem.Property(widget),Favourites + !StringCompare(Container(300).ListItem.Property(widget),RecentAlbums) + !StringCompare(Container(300).ListItem.Property(widget),TrendingMovies) + !StringCompare(Container(300).ListItem.Property(widget),TrendingShows) + !StringCompare(Container(300).ListItem.Property(widget),AiringShows) + !StringCompare(Container(300).ListItem.Property(widget),PremiereShows) + !StringCompare(Container(300).ListItem.Property(widget),InCinemas) + !StringCompare(Container(300).ListItem.Property(widget),Upcoming) + !StringCompare(Container(300).ListItem.Property(widget),PopularMovies) + !StringCompare(Container(300).ListItem.Property(widget),TopRatedMovies) + !StringCompare(Container(300).ListItem.Property(widget),PopularTvShows) + !StringCompare(Container(300).ListItem.Property(widget),TopRatedTvShows) + !StringCompare(Container(300).ListItem.Property(widget),OnAirTvShows) + !StringCompare(Container(300).ListItem.Property(widget),AiringTodayTvShows) + !StringCompare(Container(300).ListItem.Property(widget),RecommendedAlbums) + !StringCompare(Container(300).ListItem.Property(widget),RandomAlbums) + !StringCompare(Container(300).ListItem.Property(widget),RecentlyPlayedAlbums) + !StringCompare(Container(300).ListItem.Property(widget),Top100Albums) + !substring(Container(300).ListItem.Property(widget),Weather,left)</visible>                
+                </control>
+                <control type="image">
+<!-- Modification Taille ICI -->   
+                    <width>80</width>
+                    <height>120</height>
+<!-- Modification Couleur ICI -->                       
+                    <texture colordiffuse="Dark1">flags/sets.png</texture>
+                    <visible>substring(Container(301).ListItem.Path,videodb://movies/sets,left) + !StringCompare(Container(300).ListItem.Property(widget),Favourites + !StringCompare(Container(300).ListItem.Property(widget),RecentAlbums) + !StringCompare(Container(300).ListItem.Property(widget),TrendingMovies)</visible>
+                    <visible>!StringCompare(Container(300).ListItem.Property(widget),Favourites + !StringCompare(Container(300).ListItem.Property(widget),RecentAlbums) + !StringCompare(Container(300).ListItem.Property(widget),TrendingMovies) + !StringCompare(Container(300).ListItem.Property(widget),TrendingShows) + !StringCompare(Container(300).ListItem.Property(widget),AiringShows) + !StringCompare(Container(300).ListItem.Property(widget),PremiereShows) + !StringCompare(Container(300).ListItem.Property(widget),InCinemas) + !StringCompare(Container(300).ListItem.Property(widget),Upcoming) + !StringCompare(Container(300).ListItem.Property(widget),PopularMovies) + !StringCompare(Container(300).ListItem.Property(widget),TopRatedMovies) + !StringCompare(Container(300).ListItem.Property(widget),PopularTvShows) + !StringCompare(Container(300).ListItem.Property(widget),TopRatedTvShows) + !StringCompare(Container(300).ListItem.Property(widget),OnAirTvShows) + !StringCompare(Container(300).ListItem.Property(widget),AiringTodayTvShows) + !StringCompare(Container(300).ListItem.Property(widget),RecommendedAlbums) + !StringCompare(Container(300).ListItem.Property(widget),RandomAlbums) + !StringCompare(Container(300).ListItem.Property(widget),RecentlyPlayedAlbums) + !StringCompare(Container(300).ListItem.Property(widget),Top100Albums) + !substring(Container(300).ListItem.Property(widget),Weather,left)</visible>  
+                </control>
+            </control>               
+            
+<!-- Suppression Flagstar ICI -->   
+
+<!-- Suppression Rating ICI -->   
+            
+<!--  Ajout Flags ICI -->               
+ 	<control type="image">
+                 <width>108</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/aspectratio/aspectratio.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.VideoAspect)</visible>
+            </control>
+            <control type="image">
+                 <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.VideoResolution,flags/resolution/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.VideoResolution)</visible>
+            </control>
+            <control type="image">
+                <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.VideoCodec,flags/video/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.VideoCodec)</visible>
+            </control>
+            <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.AudioCodec,flags/audio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.AudioCodec)</visible>
+            </control>
+             <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.AudioChannels,flags/channels/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.AudioChannels)</visible>
+            </control> 
+     </control>         
+
+<!-- Ajout Grouplist ICI -->            
+        <control type="grouplist">
+            <visible>!Skin.HasSetting(furniture.flags)</visible>
+            <visible>Control.HasFocus(301)</visible>
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <left>SidePad</left>
+            <centerbottom>NavBarPad</centerbottom>
+            <width>1400</width>
+            <height>160</height>
+            <orientation>horizontal</orientation>
+            <align>left</align>
+<!-- Modification Taille ICI -->            
+            <itemgap>15</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>                                         
+            
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <height>50</height>
+                <centertop>23%</centertop>
+                <texture colordiffuse="Dark1">flags/3D.png</texture>
+                <visible>Container(9500).ListItem.IsStereoscopic</visible>
+            </control>
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <height>50</height>
+                <centertop>23%</centertop>
+                <texture colordiffuse="Dark1">flags/bluray.png</texture>
+                <visible>[substring(Container(301).ListItem.FilenameAndPath,bluray) | substring(Container(301).ListItem.FilenameAndPath,bdrip) | substring(Container(301).ListItem.FilenameAndPath,bd25) | substring(Container(301).ListItem.FilenameAndPath,bd50)]</visible>
+            </control>
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>23%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/hddvd.png</texture>
+                <visible>substring(Container(301).ListItem.FilenameAndPath,hddvd)</visible>
+            </control>
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>23%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/dvd.png</texture>
+                <visible>substring(Container(301).ListItem.FilenameAndPath,dvd) + !substring(Container(301).ListItem.FilenameAndPath,hddvd)</visible>
+            </control>
+            
+            <control type="image">
+<!-- Modification Taille ICI -->               
+                <width>73</width>
+                <centertop>23%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/imdb.png</texture>
+                <visible>!IsEmpty(Container(301).ListItem.Top250)</visible>
+            </control>     
+        </control>
+    </include>
+
+<!-- Ajout Include ICI -->    
+     <include name="Furniture_Home_Flags_Classic">
+        <control type="grouplist">
+            <visible>!Skin.HasSetting(furniture.flags)</visible>
+            <visible>Control.HasFocus(301)</visible>
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+	  <right>0</right>
+            <left>300</left>
+            <height>64</height>
+            <orientation>horizontal</orientation>
+            <align>right</align>           
+            <itemgap>15</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="group">
+                <width>73</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <control type="image" description="button back">           
+                    <width>73</width>
+                    <height>50</height>               
+                    <texture colordiffuse="Dark1">$VAR[HDSD]</texture>
+                    <visible>!substring(Container(301).ListItem.Path,videodb://movies/sets,left)</visible>                
+                </control>
+                <control type="image">
+                    <width>80</width>
+                    <height>120</height>                   
+                    <texture colordiffuse="Dark1">flags/sets.png</texture>
+                    <visible>substring(Container(301).ListItem.Path,videodb://movies/sets,left)</visible>  
+                </control>
+            </control>               
+                         
+ 	<control type="image">
+                 <width>108</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/aspectratio/aspectratio.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.VideoAspect)</visible>
+            </control>
+            <control type="image">
+                 <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.VideoResolution,flags/resolution/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.VideoResolution)</visible>
+            </control>
+            <control type="image">
+                <width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.VideoCodec,flags/video/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.VideoCodec)</visible>
+            </control>
+            <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.AudioCodec,flags/audio/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.AudioCodec)</visible>
+            </control>
+             <control type="image">
+		<width>130</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture fallback="flags/default.png" colordiffuse="Dark1">$INFO[Container(301).ListItem.AudioChannels,flags/channels/,.png]</texture>
+                <aspectratio align="left">scale</aspectratio>
+                <visible>!IsEmpty(Container(301).ListItem.AudioChannels)</visible>
+            </control>                                    
+            <control type="image">             
+                <width>73</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture colordiffuse="Dark1">flags/3D.png</texture>
+                <visible>Container(301).ListItem.IsStereoscopic</visible>
+            </control>
+            <control type="image">          
+                <width>73</width>
+                <height>50</height>
+                <centertop>60%</centertop>
+                <texture colordiffuse="Dark1">flags/bluray.png</texture>
+                <visible>[substring(Container(301).ListItem.FilenameAndPath,bluray) | substring(Container(301).ListItem.FilenameAndPath,bdrip) | substring(Container(301).ListItem.FilenameAndPath,bd25) | substring(Container(301).ListItem.FilenameAndPath,bd50)]</visible>
+            </control>
+            <control type="image">            
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/hddvd.png</texture>
+                <visible>substring(Container(301).ListItem.FilenameAndPath,hddvd)</visible>
+            </control>
+            <control type="image">           
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/dvd.png</texture>
+                <visible>substring(Container(301).ListItem.FilenameAndPath,dvd) + !substring(Container(301).ListItem.FilenameAndPath,hddvd)</visible>
+            </control>
+            
+            <control type="image">             
+                <width>73</width>
+                <centertop>60%</centertop>
+                <height>50</height>
+                <texture colordiffuse="Dark1">flags/imdb.png</texture>
+                <visible>!IsEmpty(Container(301).ListItem.Top250)</visible>
+            </control>     
+        </control>
+    </include>        
+    
+    
+<variable name="HeaderIcon">
+        <value condition="Window.IsVisible(DialogMuteBug.xml)">special://skin/extras/icons/mute.png</value>
+        <value condition="Window.IsVisible(DialogButtonMenu.xml)">special://skin/extras/icons/power.png</value>
+        <value condition="Window.IsVisible(DialogFavourites.xml)">special://skin/extras/icons/favourites.png</value>
+        <value condition="Window.IsVisible(1101)">special://skin/extras/icons/film.png</value>
+        <value condition="Window.IsVisible(1102)">special://skin/extras/icons/tv.png</value>
+        <value condition="Window.IsVisible(1103) | Window.IsVisible(1104) | Window.IsVisible(1105)">special://skin/extras/icons/director.png</value>
+        <value condition="Player.HasAudio + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/songs.png</value>
+        <value condition="Player.HasVideo + VideoPlayer.Content(livetv) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/livetv.png</value>
+        <value condition="Player.HasVideo + VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/film.png</value>
+        <value condition="Player.HasVideo + VideoPlayer.Content(episodes) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/tv.png</value>
+        <value condition="Player.HasVideo + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/eye.png</value>
+        <value condition="Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml)">special://skin/extras/icons/youtube.png</value>
+        <value condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-VideoList.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml) | Window.IsVisible(script-globalsearch-infodialog.xml)">special://skin/extras/icons/info.png</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">special://skin/extras/icons/tvguide.png</value>
+        <value condition="Window.IsVisible(script-globalsearch-main.xml)">special://skin/extras/icons/search.png</value>
+        <value condition="SubString(Container.FolderPath,sources://,Left)">special://skin/extras/icons/files.png</value>
+        <value condition="SubString(Container.FolderPath,special://videoplaylists/,Left)">special://skin/extras/icons/playlist.png</value>
+        <value condition="StringCompare(Container.FolderPath,special://profile/playlists/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="StringCompare(Container.FolderPath,special://profile/playlists/video/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="StringCompare(Container.FolderPath,special://profile/playlists/music/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="StringCompare(Container.FolderPath,special://profile/playlists/mixed/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="Window.IsVisible(MyMusicPlaylistEditor.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)">special://skin/extras/icons/songs.png</value>
+        <value condition="SubString(Container.FolderPath,library://video/movies/,Left)">special://skin/extras/icons/film.png</value>
+        <value condition="SubString(Container.FolderPath,library://video/tvshows/,Left)">special://skin/extras/icons/tv.png</value>
+        <value condition="SubString(Container.FolderPath,videodb://movies/,Left)">special://skin/extras/icons/film.png</value>
+        <value condition="SubString(Container.FolderPath,videodb://tvshows/,Left)">special://skin/extras/icons/tv.png</value>
+        <value condition="SubString(Container.FolderPath,plugin://,Left)">special://skin/extras/icons/video-addons.png</value>
+        <value condition="Container.Content(movies)">special://skin/extras/icons/film.png</value>
+        <value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">special://skin/extras/icons/tv.png</value>
+        <value condition="Container.Content(songs)">special://skin/extras/icons/songs.png</value>
+        <value condition="Container.Content(livetv)">special://skin/extras/icons/livetv.png</value>
+        <value condition="Container.Content(files)">special://skin/extras/icons/files.png</value>
+        <value condition="Container.Content(plugins)">special://skin/extras/icons/video-addons.png</value>
+        <value condition="Container.Content(addons)">special://skin/extras/icons/addons.png</value>
+        <value condition="SubString(Container.FolderPath,videodb://musicvideos/,Left)">special://skin/extras/icons/musicvideo.png</value>
+        <value condition="Window.IsVisible(Custom_SetCustomColor.xml)">special://skin/extras/icons/wand.png</value>
+        <value condition="Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml)">special://skin/extras/icons/livetv.png</value>
+        <value condition="Window.IsVisible(MyMusicPlaylistEditor.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)">special://skin/extras/icons/songs.png</value>
+        <value condition="Window.IsVisible(MyPics.xml)">special://skin/extras/icons/pictures.png</value>
+        <value condition="Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml)">special://skin/extras/icons/addons.png</value>
+        <value condition="Window.IsVisible(weather)">special://skin/extras/icons/sun.png</value>
+        <value condition="Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(settings) | Window.IsVisible(SkinSettings.xml)">special://skin/extras/icons/settings.png</value>
+        <value condition="Window.IsVisible(MyMusicPlaylist.xml)">special://skin/extras/icons/playlist.png</value>
+        <value condition="Window.IsVisible(FileManager.xml)">special://skin/extras/icons/database.png</value>
+        <value condition="Window.IsVisible(Home.xml)">special://skin/extras/icons/home.png</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml)">special://skin/extras/icons/video-addons.png</value>
+        <value>special://skin/extras/icons/artist.png</value>
+    </variable>
+
+    <variable name="GlobalSearchHeaderLabel">
+        <value condition="Control.HasFocus(211)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(210)][/COLOR] $LOCALIZE[344]</value>
+<!-- Ajout ICI -->             
+        <value condition="Control.HasFocus(221)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(220)][/COLOR] $LOCALIZE[350]</value>
+<!-- Ajout ICI -->        
+        <value condition="Control.HasFocus(221)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(220)][/COLOR] $LOCALIZE[31774]</value>
+        <value condition="Control.HasFocus(111)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(110)][/COLOR] $LOCALIZE[20342]</value>
+        <value condition="Control.HasFocus(121)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(120)][/COLOR] $LOCALIZE[20343]</value>
+        <value condition="Control.HasFocus(131)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(130)][/COLOR] $LOCALIZE[33054]</value>
+        <value condition="Control.HasFocus(141)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(140)][/COLOR] $LOCALIZE[20360]</value>
+        <value condition="Control.HasFocus(151)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(150)][/COLOR] $LOCALIZE[20389]</value>
+        <value condition="Control.HasFocus(161)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(160)][/COLOR] $LOCALIZE[133]</value>
+        <value condition="Control.HasFocus(171)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(170)][/COLOR] $LOCALIZE[132]</value>
+        <value condition="Control.HasFocus(181)">[COLOR=$VAR[ColorHighlight]]$INFO[Control.GetLabel(180)][/COLOR] $LOCALIZE[134]</value>
+    </variable>
+    
+    <variable name="MainHeaderLabel">
+        <value condition="Skin.HasSetting(hide.busydialog) + Window.IsVisible(DialogBusy.xml)">$LOCALIZE[20186]...</value>
+        <value condition="Window.IsVisible(Custom_SetCustomColor.xml)">$LOCALIZE[31238]</value>
+        <value condition="Window.IsVisible(MyMusicPlaylistEditor.xml)">$LOCALIZE[20011]</value>
+        <value condition="Window.IsVisible(DialogButtonMenu.xml)">$LOCALIZE[33060]</value>
+        <value condition="Window.IsVisible(DialogFavourites.xml)">$LOCALIZE[1036]</value>
+        <value condition="[Window.IsVisible(script-globalsearch-main.xml) | Window.IsVisible(script-globalsearch-info.xml)] + [!IsEmpty(Control.GetLabel(190)) | !IsEmpty(Control.GetLabel(191)) | !IsEmpty(Control.GetLabel(199))]">$INFO[Control.GetLabel(190)]$INFO[Control.GetLabel(191)]$INFO[Control.GetLabel(199)]</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">[CAPITALIZE]$LOCALIZE[4][/CAPITALIZE]</value>
+        <value condition="[Window.IsVisible(script-globalsearch-main.xml) | Window.IsVisible(script-globalsearch-info.xml)] + IsEmpty(Control.GetLabel(190)) + IsEmpty(Control.GetLabel(191)) + IsEmpty(Control.GetLabel(199))">$LOCALIZE[283]</value>
+        <value condition="Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml)">$LOCALIZE[31141]</value>
+        <value condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-VideoList.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml)">$LOCALIZE[31241]</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml) + StringCompare(Container.FolderPath,videodb://movies/titles/)">$LOCALIZE[20342]</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml) + StringCompare(Container.FolderPath,videodb://tvshows/titles/)">$LOCALIZE[20343]</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml) + SubString(Container.FolderPath,videodb://movies/,Left)">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml) + SubString(Container.FolderPath,videodb://tvshows/,Left) + Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]$INFO[Container.FolderName, - ,]</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml) + SubString(Container.FolderPath,videodb://tvshows/,Left)">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml) + !IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml)">$LOCALIZE[3]</value>                                                                          
+        <value condition="Window.IsVisible(MyPVRChannels.xml)">$LOCALIZE[19019]</value>
+        <value condition="Window.IsVisible(MyPVRGuide.xml)">$LOCALIZE[4]</value>
+        <value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
+        <value condition="Window.IsVisible(MyPVRTimers.xml)">$LOCALIZE[19040]</value>
+        <value condition="Window.IsVisible(MyPVRSearch.xml)">$LOCALIZE[137]</value>
+        <value condition="!IsEmpty(Container.FolderName) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)]">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)">$LOCALIZE[2]</value>
+        <value condition="Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(settings) | Window.IsVisible(SkinSettings.xml)">$LOCALIZE[5]</value>
+        <value condition="Window.IsVisible(weather)">$LOCALIZE[8]</value>
+        <value condition="!IsEmpty(Container.FolderName) + Window.IsVisible(MyPics.xml)">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsVisible(MyPics.xml)">$LOCALIZE[1]</value>
+        <value condition="Window.IsVisible(MyPrograms.xml)">$LOCALIZE[0]</value>
+        <value condition="Window.IsVisible(AddonBrowser.xml)">$LOCALIZE[24001]</value>
+        <value condition="Window.IsVisible(MyMusicPlaylist.xml)">$LOCALIZE[559]</value>
+        <value condition="Window.IsVisible(FileManager.xml)">$LOCALIZE[744]</value>
+        <value condition="Window.IsVisible(1101)">$LOCALIZE[31192]</value>
+        <value condition="Window.IsVisible(1102)">$LOCALIZE[31193]</value>
+        <value condition="Window.IsVisible(1103) + StringCompare(Window(1103).Property(content),1)">$INFO[Window(home).Property(ExtStudio),$LOCALIZE[31205] ,]</value>
+        <value condition="Window.IsVisible(1103) + StringCompare(Window(1103).Property(content),2)">$INFO[Window(home).Property(ExtMovie),$LOCALIZE[31204] ,]</value>
+        <value condition="Window.IsVisible(1103)">$INFO[Window(home).Property(ExtDirector),$LOCALIZE[31191] ,]</value>
+        <value condition="Window.IsVisible(1104) + StringCompare(Window(1104).Property(content),1)">$LOCALIZE[31211]</value>
+        <value condition="Window.IsVisible(1104) + StringCompare(Window(1104).Property(content),2)">$LOCALIZE[31210]</value>
+        <value condition="Window.IsVisible(1104) + StringCompare(Window(1104).Property(content),3)">$LOCALIZE[31209]</value>
+        <value condition="Window.IsVisible(1104)">$LOCALIZE[31208]</value>
+        <value condition="Window.IsVisible(1105) + StringCompare(Window(1105).Property(content),1)">$LOCALIZE[31211]</value>
+        <value condition="Window.IsVisible(1105) + StringCompare(Window(1105).Property(content),2)">$LOCALIZE[31210]</value>
+        <value condition="Window.IsVisible(1105) + StringCompare(Window(1105).Property(content),3)">$LOCALIZE[31212]</value>
+        <value condition="Window.IsVisible(1105)">$LOCALIZE[31213]</value>
+        <value>$LOCALIZE[10000]</value>
+    </variable>   
+    
+    <variable name="SubHeaderLabel">
+        <value condition="Window.IsVisible(script-ExtendedInfo Script-YoutubeList.xml)">$INFO[Window.Property(Filter_Label),,  ]$INFO[Window.Property(TotalItems),, $LOCALIZE[31101]]</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(NextAired.Total),,[/COLOR] $LOCALIZE[20343]]</value>
+        <value condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-VideoList.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml) | Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml)">$LOCALIZE[31242]</value>
+        <value condition="Window.IsVisible(script-globalsearch-infodialog.xml)">$LOCALIZE[31784]</value>
+        <value condition="Window.IsVisible(script-globalsearch-main.xml) + IsEmpty(Control.GetLabel(190)) + IsEmpty(Control.GetLabel(191)) + IsEmpty(Control.GetLabel(199))">$VAR[GlobalSearchHeaderLabel]</value>
+        <value condition="Window.IsVisible(LoginScreen.xml)">$LOCALIZE[10029]</value>
+        <value condition="Window.IsVisible(Custom_SetCustomColor.xml)">$LOCALIZE[31239] [COLOR=$VAR[ColorHighlight]]$VAR[ColorHighlight][/COLOR]  •  $LOCALIZE[31240] [COLOR=$INFO[Control.GetLabel(9500)]]$INFO[Control.GetLabel(9500)][/COLOR]</value>
+        <value condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml)]">[COLOR=$VAR[ColorHighlight]]$INFO[Container.NumItems,,[/COLOR] $LOCALIZE[31101]]$INFO[Control.GetLabel(3),  •  ,]$INFO[Control.GetLabel(28),  •  ,]</value>
+        <value condition="!IsEmpty(Container.NumItems) + !Window.IsVisible(home)">[COLOR=$VAR[ColorHighlight]]$INFO[Container.NumItems,,[/COLOR] $LOCALIZE[31101]]$INFO[Control.GetLabel(3),  •  ,]</value>
+        <value condition="!IsEmpty(Container(9500).NumItems) + !Window.IsVisible(home)">[COLOR=$VAR[ColorHighlight]]$INFO[Container(9500).NumItems,,[/COLOR] $LOCALIZE[31101]]</value>
+        <value condition="Window.IsVisible(MyWeather.xml) + !IsEmpty(Window(Weather).Property(Location))">[COLOR=$VAR[ColorHighlight]]$INFO[Weather.Temperature,,[/COLOR]  ]$INFO[Window(Weather).Property(Location)]</value>
+        <value condition="IsEmpty(Pvr.BackendChannels)">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Movies.Count)][/COLOR] $LOCALIZE[20342]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Episodes.Count)][/COLOR] $LOCALIZE[20360]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Music.SongsCount)][/COLOR] $LOCALIZE[134]</value>
+        <value>[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Movies.Count)][/COLOR] $LOCALIZE[20342]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Episodes.Count)][/COLOR] $LOCALIZE[20360]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Music.SongsCount)][/COLOR] $LOCALIZE[134]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Pvr.BackendChannels][/COLOR] $LOCALIZE[19019]</value>
+    </variable>
+  
+    <include name="Furniture_Header">
+     
+        <control type="image" description="clearlogo">
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <visible>Skin.HasSetting(furniture.logo)</visible>
+<!-- Modification ICI -->                 
+            <visible>!Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml) + !Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>
+<!-- Modification Taille ICI -->            
+            <centertop>95</centertop>
+            <centerleft>50%</centerleft>
+            <width>400</width>
+<!-- Modification Taille ICI -->                 
+            <height>180</height>
+            <aspectratio align="center">keep</aspectratio>
+            <texture background="true">$VAR[ClearLogoTopVar]</texture>
+        </control>        
+       
+ 
+ <!-- Ajout ICI -->        
+     <control type="image" description="clearlogo Music">
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <visible>Skin.HasSetting(furniture.logo) + !IsEmpty(Skin.String(artworklocation))</visible>
+            <visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs)</visible>
+            <centertop>95</centertop>
+            <centerleft>50%</centerleft>
+            <width>400</width>           
+            <height>180</height>
+            <aspectratio align="center">keep</aspectratio>
+            <texture background="true">$VAR[MusicClearLogo]</texture>
+        </control>
+        
+
+     
+        <control type="grouplist">
+            <top>SidePad</top>
+            <left>SidePad</left>
+  <!-- Ajout ICI -->                   
+            <visible>!Skin.HasSetting(furniture.header)</visible>
+            <visible>Skin.HasSetting(home.showheader)</visible>
+            <include>Animation.FurnitureFadeInOut</include>
+            <orientation>horizontal</orientation>
+            <itemgap>24</itemgap>
+            <control type="group" description="iconbox">
+                <width>80</width>
+                <height>80</height>
+                <control type="image">
+                    <width>80</width>
+                    <height>80</height>
+                    <texture colordiffuse="Panel" border="8">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <top>-14</top>
+                    <left>-14</left>
+                    <width>108</width>
+                    <height>108</height>
+                    <texture colordiffuse="PanelWhite100" border="8">$VAR[HeaderIcon]</texture>
+                    <visible>!Container.Scrolling</visible>
+                    <visible>!Skin.HasSetting(hide.busydialog) | !Window.IsVisible(DialogBusy.xml)</visible>
+                    <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                </control>
+                <control type="label">
+                    <centertop>39</centertop>
+                    <centerleft>40</centerleft>
+                    <width>80</width>
+                    <height>80</height>
+                    <font>LargeBold</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.SortLetter,[UPPERCASE],[/UPPERCASE]]</label>
+                    <textcolor>PanelWhite100</textcolor>
+                    <visible>Container.Scrolling</visible>
+                    <visible>!Skin.HasSetting(hide.busydialog) | !Window.IsVisible(DialogBusy.xml)</visible>
+                    <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                </control>
+                <control type="image">
+                    <centertop>40</centertop>
+                    <centerleft>40</centerleft>
+                    <width>48</width>
+                    <height>48</height>
+                    <texture colordiffuse="PanelWhite100" fallback="special://skin/extras/spinners/flower.gif">$INFO[Skin.String(busyloader)]</texture>
+                    <visible>Skin.HasSetting(hide.busydialog) + Window.IsVisible(DialogBusy.xml)</visible>
+                    <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                </control>
+            </control>
+            <control type="group">
+                <control type="label">
+                    <centertop>24</centertop>
+                    <include condition="Skin.HasSetting(furniture.logo) + !Window.IsVisible(home) + !Window.IsVisible(settings) + !Window.IsVisible(skinsettings) + !Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(tvchannels) + !Window.IsVisible(tvrecordings) + !Window.IsVisible(tvguide) + !Window.IsVisible(tvsearch) + !Window.IsVisible(tvtimers)">HeaderLabelWidthLogo</include>
+                    <width>auto</width>
+                    <font>MediumBold</font>
+                    <textcolor>Dark1</textcolor>
+                    <label>$VAR[MainHeaderLabel]</label>
+                </control>
+                <control type="label">
+                    <centertop>58</centertop>
+                    <font>Flag</font>
+                    <include condition="Skin.HasSetting(furniture.logo) + !Window.IsVisible(home) + !Window.IsVisible(settings) + !Window.IsVisible(skinsettings) + !Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(tvchannels) + !Window.IsVisible(tvrecordings) + !Window.IsVisible(tvguide) + !Window.IsVisible(tvsearch) + !Window.IsVisible(tvtimers)">HeaderLabelWidthLogo</include>
+                    <width>auto</width>
+                    <textcolor>Dark2</textcolor>
+                    <label>$VAR[SubHeaderLabel]</label>
+                </control>
+            </control>
+        </control>
+ 
+  <!-- Ajout ICI -->               
+                <control type="grouplist">
+            <top>SidePad</top>
+            <left>SidePad</left>
+            <visible>Skin.HasSetting(home.showheader) | !Skin.HasSetting(furniture.header)</visible>
+            <include>Animation.FurnitureFadeInOut</include>
+            <orientation>horizontal</orientation>
+            <itemgap>24</itemgap>
+            <control type="group" description="iconbox">
+                <width>80</width>
+                <height>80</height>
+                <control type="image">
+                    <width>80</width>
+                    <height>80</height>
+                    <texture colordiffuse="Panel" border="8">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <top>-14</top>
+                    <left>-14</left>
+                    <width>108</width>
+                    <height>108</height>
+                    <texture colordiffuse="PanelWhite100" border="8">$VAR[HeaderIcon]</texture>
+                    <visible>!Container.Scrolling</visible>
+                    <visible>!Skin.HasSetting(hide.busydialog) | !Window.IsVisible(DialogBusy.xml)</visible>
+                    <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                </control>
+                <control type="label">
+                    <centertop>39</centertop>
+                    <centerleft>40</centerleft>
+                    <width>80</width>
+                    <height>80</height>
+                    <font>LargeBold</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.SortLetter,[UPPERCASE],[/UPPERCASE]]</label>
+                    <textcolor>PanelWhite100</textcolor>
+                    <visible>Container.Scrolling</visible>
+                    <visible>!Skin.HasSetting(hide.busydialog) | !Window.IsVisible(DialogBusy.xml)</visible>
+                    <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                </control>
+                <control type="image">
+                    <centertop>40</centertop>
+                    <centerleft>40</centerleft>
+                    <width>48</width>
+                    <height>48</height>
+                    <texture colordiffuse="PanelWhite100" fallback="special://skin/extras/spinners/flower.gif">$INFO[Skin.String(busyloader)]</texture>
+                    <visible>Skin.HasSetting(hide.busydialog) + Window.IsVisible(DialogBusy.xml)</visible>
+                    <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                </control>
+            </control>
+            <control type="group">
+                <control type="label">
+                    <centertop>24</centertop>
+                    <include condition="Skin.HasSetting(furniture.logo) + !Window.IsVisible(home) + !Window.IsVisible(settings) + !Window.IsVisible(skinsettings) + !Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(tvchannels) + !Window.IsVisible(tvrecordings) + !Window.IsVisible(tvguide) + !Window.IsVisible(tvsearch) + !Window.IsVisible(tvtimers)">HeaderLabelWidthLogo</include>
+                    <width>auto</width>
+                    <font>MediumBold</font>
+                    <textcolor>Dark1</textcolor>
+                    <label>$VAR[MainHeaderLabel]</label>
+                </control>
+                <control type="label">
+                    <centertop>58</centertop>
+                    <font>Flag</font>
+                    <include condition="Skin.HasSetting(furniture.logo) + !Window.IsVisible(home) + !Window.IsVisible(settings) + !Window.IsVisible(skinsettings) + !Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(tvchannels) + !Window.IsVisible(tvrecordings) + !Window.IsVisible(tvguide) + !Window.IsVisible(tvsearch) + !Window.IsVisible(tvtimers)">HeaderLabelWidthLogo</include>
+                    <width>auto</width>
+                    <textcolor>Dark2</textcolor>
+                    <label>$VAR[SubHeaderLabel]</label>
+                </control>
+            </control>
+        </control>
+        
+    </include>
+    <include name="HeaderLabelWidthLogo"><width>560</width></include>
+    <include name="Furniture_Clock">			
+        <control type="group">
+            <include>Animation.FurnitureFadeInOut</include>
+            <centerbottom>NavBarPad</centerbottom>
+<!-- Modification ICI -->            
+            <visible>!Skin.HasSetting(furniture.clock) + ![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)] + ![Skin.HasSetting(ShowClearArtInfo) + Window.IsVisible(DialogVideoInfo.xml)]</visible>
+            <height>84</height>
+            <animation effect="slide" start="0" end="0,-10" time="150" condition="Skin.HasSetting(furniture.weather)">Conditional</animation> 
+                              
+            <control type="label">
+<!-- Modification Taille ICI -->               
+                <centertop>35</centertop>
+                <right>130</right>
+                <align>right</align>
+                <font>LargeBold</font>
+                <textcolor>Dark1</textcolor>
+                <label>$INFO[System.Time(hh:mm)]</label>
+                <animation effect="slide" start="0" end="50" time="0" condition="IsEmpty(System.Time(xx))">Conditional</animation>
+            </control>
+            <control type="label">
+<!-- Modification Taille ICI -->            
+                <centertop>35</centertop>
+                <right>SidePad</right>
+                <font>SmallBold</font>
+                <textcolor>Dark3</textcolor>
+                <align>right</align>
+                <width>120</width>
+                <label>$INFO[System.Time(xx)]</label>
+                <visible>!IsEmpty(System.Time(xx))</visible>
+            </control>  
+            <control type="label">
+<!-- Modification Taille ICI -->            
+                <centertop>74</centertop>
+                <right>SidePad</right>
+                <font>Flag</font>
+                <textcolor>Dark2</textcolor>
+                <align>right</align>
+                <width>50%</width>
+                <label>$INFO[System.Date(DDD)]$COMMA $INFO[System.Date(d MMM yyyy)]</label>
+            </control>
+            <control type="label">
+<!-- Modification Taille ICI -->            
+                <centertop>102</centertop>
+                <right>SidePad</right>
+                <font>Flag</font>
+                <textcolor>Dark3</textcolor>
+                <align>right</align>
+                <width>50%</width>
+                <visible>Skin.HasSetting(furniture.weather)</visible>
+                <label>[COLOR=$VAR[ColorHighlight]]$INFO[Weather.Temperature][/COLOR]  $INFO[Weather.Conditions]</label>
+            </control>
+      
+        </control>
+        
+    </include>
+    
+  <include name="Furniture_Weather">
+        <!-- Weather Furniture -->
+        <control type="grouplist">
+            <include>Animation.FurnitureFadeInOut</include>
+<!-- Suppression ICI --> 
+<!-- Modification ICI --> 
+            <visible>substring(Container(300).ListItem.Property(widget),Weather,left) | Skin.HasSetting(home.showweatherfanart)</visible>
+            <visible>!Window.IsVisible(DialogVolumeBar.xml)</visible>
+            <visible>!Window.IsVisible(DialogKaiToast.xml)</visible>
+            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+            <visible>!Window.IsActive(DialogKaiToast.xml)</visible>
+            <visible>Skin.HasSetting(furniture.nowplaying) | [!Skin.HasSetting(furniture.nowplaying) + IsEmpty(Player.Duration) + !Player.HasAudio]</visible>
+            <top>70</top>
+            <right>62</right>
+            <orientation>horizontal</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>24</itemgap>
+            <align>right</align>
+            <control type="group">
+                <width>700</width>
+                <posy>10</posy>
+                <control type="label">
+                    <centertop>24</centertop>
+                    <width>auto</width>
+                    <font>MediumBold</font>
+                    <align>right</align>
+                    <textcolor>Dark1</textcolor>
+                    <label>$INFO[Weather.Temperature]</label>
+                </control>
+                <control type="label">
+                    <centertop>58</centertop>
+                    <align>right</align>
+                    <font>Flag</font>
+                    <width>auto</width>
+                    <textcolor>Dark2</textcolor>
+                    <label>$INFO[Weather.Location,, - ]$INFO[Weather.Conditions]</label>
+                </control>
+            </control>
+            <control type="group">
+                <posx>-10</posx>
+                <posy>10</posy>
+                <height>80</height>
+                <width>90</width>
+                <control type="image">
+                    <width>80</width>
+                    <height>80</height>
+                    <fadetime>350</fadetime>
+                    <aspectratio aligny="center" align="center">keep</aspectratio>
+                    <texture colordiffuse="Dark1">$INFO[Weather.FanartCode,weather/small/,.png]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+    
+    
+    <include name="Furniture_NowPlaying">
+        
+        <control type="grouplist">
+            <visible>!Skin.HasSetting(furniture.nowplaying)</visible>
+            <visible>!Window.IsVisible(DialogVolumeBar.xml)</visible>
+            <visible>!Window.IsVisible(DialogKaiToast.xml)</visible>
+            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+            <include>Animation.FurnitureFadeInOut</include>
+            <visible>IsEmpty(Window(10025).Property(TvTunesIsAlive))</visible>
+            <visible>!Window.IsActive(DialogKaiToast.xml)</visible>
+            <visible>Player.HasMedia</visible>
+            <visible>!IsEmpty(Player.Duration) | Player.HasAudio</visible>
+<!-- Ajout ICI -->               
+            <visible>!Window.IsVisible(DialogAlbumInfo.xml) + !Window.IsVisible(DialogVideoInfo.xml)</visible>
+            <animation effect="slide" start="0" end="0,-250" time="150" condition="Control.HasFocus(301) + !Skin.HasSetting(home.classicwidgets) + !Skin.HasSetting(home.vertical)">Conditional</animation>
+            <top>70</top>
+            <right>62</right>
+            <orientation>horizontal</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>24</itemgap>
+            <align>right</align>
+            <control type="group">
+                <include condition="Skin.HasSetting(furniture.logo)">HeaderLabelWidthLogo</include>
+                <width>700</width>
+                <posy>10</posy>                
+                <control type="label">
+                    <centertop>24</centertop>
+                    <width>auto</width>
+                    <font>MediumBold</font>
+                    <align>right</align>
+<!-- Modifications ICI -->                                           
+                    <textcolor>Dark1</textcolor>                   
+                     <label>$INFO[Player.Title]</label>
+                </control>
+                
+                <control type="label">
+                    <centertop>58</centertop>
+                    <align>right</align>
+                    <font>Flag</font>
+                    <width>auto</width>
+                    <textcolor>Dark2</textcolor>
+<!-- Modifications ICI -->                         
+                    <label>$INFO[VideoPlayer.TvShowTitle,, • ]$INFO[MusicPlayer.Artist,, • ]$INFO[Player.Time]$INFO[Player.Duration, / ,]</label>
+                </control>
+<!-- Suppression ICI -->                      
+            </control>
+<!-- Ajout ICI -->             
+                <control type="image">
+                        <width>100</width>
+                        <height>100</height>
+                        <texture fallback="DefaultAlbumCover.png">$VAR[PlayerPoster]</texture>
+                         <aspectratio align="center" aligny="center">keep</aspectratio>    
+                         <animation effect="fade" start="100" end="90" condition="true">Conditional</animation>
+                 </control>  
+              </control>
+    </include>
+    
+    <include name="Furniture_OverlayInfo">
+    
+    <control type="button" id ="9601">
+            <width>1</width>
+            <height>1</height>
+            <visible allowhiddenfocus="true">false</visible>
+            <onback>50</onback>
+            <onup>50</onup>
+            <ondown>50</ondown>
+            <onleft>50</onleft>
+            <onright>50</onright>
+        </control>
+    
+        <control type="group">
+	  <visible>[System.IdleTime(5) + Skin.HasSetting(furniture.overlayinfo)] | Control.HasFocus(9601)</visible>
+            <visible>![Window.IsVisible(script-skinshortcuts.xml) | Window.IsVisible(DialogSongInfo.xml) | Window.IsVisible(DialogPictureInfo.xml) | Window.IsVisible(FileBrowser.xml) | Window.IsVisible(DialogProgress.xml) | Window.IsVisible(DialogYesNo.xml) | Window.IsVisible(DialogOK.xml) | Window.IsVisible(DialogSelect.xml) | Window.IsVisible(DialogContextMenu.xml) | Window.IsVisible(DialogButtonMenu.xml) | ControlGroup(9000).HasFocus()]</visible>
+            <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
+            <visible>!Window.IsVisible(script-ExtendedInfo Script-VideoList.xml) + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(script-globalsearch-infodialog.xml) + !Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml) + !Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml)</visible>
+            <visible>[!IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot)) + [Container.Content(Sets) | substring(ListItem.Path,videodb://movies/sets,left)]] | !IsEmpty(ListItem.Plot)</visible>
+            <include>Animation.FadeIn</include>
+<!-- Modification ICI -->                
+            <include>PlotOverlay</include>
+            <include>PlotOverlay</include>
+        </control>
+
+<!-- Ajout ICI --> 
+        <control type="image" description="clearlogo">
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <visible>Skin.HasSetting(furniture.logo)</visible>        
+            <visible>![Control.IsVisible(155) + Skin.HasSetting(View_155_BigWall)]</visible>            
+            <centertop>95</centertop>
+            <centerleft>50%</centerleft>
+            <width>400</width>                
+            <height>180</height>
+            <aspectratio align="center">keep</aspectratio>
+            <texture background="true">$VAR[ClearLogoTopVar]</texture>
+        </control>        
+
+        <control type="group">
+            <left>SidePad</left>
+            <right>SidePad</right>
+            <top>PosterPad</top>
+            <height>650</height>
+	  <visible>[System.IdleTime(5) + Skin.HasSetting(furniture.overlayinfo)] | Control.HasFocus(9601)</visible>
+            <visible>![Window.IsVisible(script-skinshortcuts.xml) | Window.IsVisible(DialogSongInfo.xml) | Window.IsVisible(DialogPictureInfo.xml) | Window.IsVisible(FileBrowser.xml) | Window.IsVisible(DialogProgress.xml) | Window.IsVisible(DialogYesNo.xml) | Window.IsVisible(DialogOK.xml) | Window.IsVisible(DialogSelect.xml) | Window.IsVisible(DialogContextMenu.xml) | Window.IsVisible(DialogButtonMenu.xml) | ControlGroup(9000).HasFocus()]</visible>
+            <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
+            <visible>!Window.IsVisible(script-ExtendedInfo Script-VideoList.xml) + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(script-globalsearch-infodialog.xml) + !Window.IsVisible(script-ExtendedInfo Script-DialogInfo.xml) + !Window.IsVisible(script-ExtendedInfo Script-DialogVideoInfo.xml)</visible>
+            <visible>[!IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot)) + [Container.Content(Sets) | substring(ListItem.Path,videodb://movies/sets,left)]] | !IsEmpty(ListItem.Plot)</visible>
+            <include>Animation.FadeIn.Slide</include>
+
+            <control type="label">
+                <description>header label</description>
+                <left>60</left>
+                <right>60</right>
+                <posy>60</posy>
+                <font>EpisodeNumber</font>
+<!-- Modification Color ICI -->                   
+                <textcolor>Dark1</textcolor>
+                <height>45</height>
+                <label>$VAR[LabelOverlayTitle]</label>
+            </control>
+
+            <control type="textbox">
+                <description>textarea</description>
+                <left>60</left>
+                <right>60</right>
+                <top>150</top>
+                <bottom>0</bottom>
+                <align>justify</align>
+                <font>Medium</font>
+<!-- Modification Color ICI -->                  
+                <textcolor>Dark2</textcolor>
+                <label>$VAR[LabelOverlayPlot]</label>
+            </control>            
+        </control>
+    </include>
+
+</includes>

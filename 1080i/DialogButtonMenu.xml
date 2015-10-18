@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="buttonMenu" id="111">
+    <defaultcontrol always="true">3110</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <zorder>10</zorder>
+    <controls>
+
+        <include>GlobalOverlay</include>
+	<control type="image">
+                <description>background image</description>
+                <left>727</left>
+                <top>275</top>
+                <width>466</width>
+                <height>460</height>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+            </control>
+         <control type="group">
+                <control type="image">
+                    <visible>Container(3110).HasPrevious</visible>
+                    <description>arrow image</description>
+                    <centerleft>50%</centerleft>
+                    <posy>254</posy>
+                    <width>16</width>
+                    <height>16</height>
+                    <texture colordiffuse="White70" flipy="true">common/arrow-small.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Container(3110).HasNext</visible>
+                    <description>arrow image</description>
+                    <centerleft>50%</centerleft>
+                    <posy>740</posy>
+                    <width>16</width>
+                    <height>16</height>
+                    <texture colordiffuse="White70" flipy="false">common/arrow-small.png</texture>
+                </control>
+           </control>
+	   <control type="list" id="3110">
+        		<left>735</left>
+       		<top>295</top>
+       		<height>420</height>
+        		<ondown>SetFocus(3110)</ondown>
+        		<onup>SetFocus(3110)</onup>
+        		<scrolltime>200</scrolltime>
+        		<orientation>vertical</orientation>
+        	<itemlayout width="450" height="70">
+            <control type="image">
+            	<align>center</align>
+                   <texture colordiffuse="White100">common/white.png</texture>
+            </control>
+            <control type="label">
+                <align>center</align>
+                <height>100%</height>
+                <font>Tiny</font>
+                <aligny>center</aligny>
+                <textcolor>ff333333</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </itemlayout>
+        <focusedlayout width="450" height="70">
+            <control type="image">
+                <height>100%</height>
+                <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+            </control>
+            <control type="label">
+                <align>center</align>
+                <height>100%</height>
+                <font>Tiny</font>
+                <aligny>center</aligny>
+                <textcolor>ffdddddd</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </focusedlayout>
+                <content><include>skinshortcuts-group-powermenu</include></content>
+             </control>
+
+    </controls>
+</window>

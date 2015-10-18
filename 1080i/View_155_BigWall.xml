@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<includes>
+	<include name="View_155_BigWall">
+		<control type="group">
+			<include>Animation.Common</include>
+			<visible>Control.IsVisible(155)</visible>
+			<visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
+			<control type="panel" id="155">
+				<visible>Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)</visible>
+				<top>0</top>
+				<right>0</right>
+				<width>1920</width>
+				<height>1080</height>
+				<onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
+				<onright>60</onright>
+				<onup>155</onup>
+				<ondown>155</ondown>
+				<preloaditems>2</preloaditems>
+				<pagecontrol>60</pagecontrol>
+				<viewtype label="31746">panel</viewtype>
+				<scrolltime tween="quadratic">400</scrolltime>
+				<itemlayout width="128" height="180">
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<right>0</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>						
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>22</width>
+						<height>22</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>22</width>
+						<height>22</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>					
+				</itemlayout>
+				<focusedlayout condition="!Container.Column(14) + !Container.Row(5)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<right>0</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<left>256</left>
+						<top>0</top>
+						<right>-384</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="image">
+						<posx>-384</posx>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<width>246</width>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>45</top>
+							<right>-384</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>	
+						</control>
+						<!-- Plot -->
+						<control type="textbox">
+							<left>266</left>
+							<top>90</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>	
+						</control>
+					</control>
+					
+					<control type="group">
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<width>384</width>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>45</top>
+							<right>20</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-374</posx>
+							<top>90</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>							
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>32</width>
+						<height>32</height>						
+						<texture colordiffuse="$VAR[ColorHighlight]">common/selectbigwall.png</texture>
+					</control>
+				</focusedlayout>
+				<focusedlayout condition="!Container.Row(5) + Container.Column(14)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>-128</left>
+						<top>0</top>
+						<right>128</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<left>-125</left>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<left>-125</left>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]" >$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<left>96</left>
+						<top>0</top>
+						<width>32</width>
+						<height>32</height>
+						<texture colordiffuse="$VAR[ColorHighlight]" flipy="false" flipx="true">common/selectbigwall.png</texture>
+					</control>
+					<control type="image">
+						<posx>-512</posx>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<posx>-118</posx>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>45</top>
+							<right>10</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-384</posx>
+							<top>90</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<focusedlayout condition="Container.Row(5) + Container.Column(14)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>-128</left>
+						<top>-180</top>
+						<right>128</right>
+						<bottom>180</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<left>97</left>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<left>97</left>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>					
+					<control type="image">
+						<left>96</left>
+						<top>148</top>
+						<width>32</width>
+						<height>32</height>
+						<texture colordiffuse="$VAR[ColorHighlight]" flipy="true" flipx="true">common/selectbigwall.png</texture>
+					</control>
+					<control type="image">
+						<posy>-180</posy>
+						<posx>-512</posx>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<posx>-118</posx>
+						<posy>-180</posy>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Black300</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>45</top>
+							<right>10</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-384</posx>
+							<top>90</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<focusedlayout condition="Container.Row(5) + !Container.Column(14)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>-180</top>
+						<right>0</right>
+						<bottom>180</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<left>256</left>
+						<posy>-180</posy>
+						<right>-384</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="image">
+						<posx>-384</posx>
+						<posy>-180</posy>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<width>246</width>
+						<posy>-180</posy>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>45</top>
+							<right>-384</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>	
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<left>266</left>
+							<top>90</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+					<control type="group">
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<posy>-180</posy>						
+						<width>374</width>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>45</top>
+							<right>10</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-374</posx>
+							<top>90</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<right>3</right>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<right>3</right>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>					
+					<control type="image">
+						<left>0</left>	
+						<top>148</top>
+						<width>32</width>
+						<height>32</height>
+						<texture colordiffuse="$VAR[ColorHighlight]" flipy="true" flipx="false">common/selectbigwall.png</texture>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+	</include>
+
+
+
+<include name="View_155_SmallWall">
+		<control type="group">
+			<include>Animation.Common</include>
+			<visible>Control.IsVisible(155)</visible>
+			<visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
+			<control type="panel" id="155">
+				<visible>Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)</visible>
+				<top>180</top>
+				<right>0</right>
+				<width>1920</width>
+				<height>720</height>
+				<onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
+				<onright>60</onright>
+				<onup>155</onup>
+				<ondown>155</ondown>
+				<preloaditems>2</preloaditems>
+				<pagecontrol>60</pagecontrol>
+				<viewtype label="31746">panel</viewtype>
+				<scrolltime tween="quadratic">400</scrolltime>
+				<itemlayout width="128" height="180">
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<right>0</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>						
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>22</width>
+						<height>22</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>22</width>
+						<height>22</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>					
+				</itemlayout>
+				<focusedlayout condition="!Container.Column(14) + !Container.Row(3)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<right>0</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<left>256</left>
+						<top>0</top>
+						<right>-384</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="image">
+						<posx>-384</posx>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<width>246</width>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>45</top>
+							<right>-384</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>	
+						</control>
+						<!-- Plot -->
+						<control type="textbox">
+							<left>266</left>
+							<top>90</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>	
+						</control>
+					</control>
+					
+					<control type="group">
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<width>384</width>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>45</top>
+							<right>20</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-374</posx>
+							<top>90</top>
+							<right>20</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>							
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<right>3</right>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>32</width>
+						<height>32</height>						
+						<texture colordiffuse="$VAR[ColorHighlight]">common/selectbigwall.png</texture>
+					</control>
+				</focusedlayout>
+				<focusedlayout condition="!Container.Row(3) + Container.Column(14)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>-128</left>
+						<top>0</top>
+						<right>128</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<left>-125</left>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+						<visible>stringcompare(ListItem.Overlay,OverlayWatched.png)</visible>
+					</control>
+					<control type="image">
+						<left>-125</left>
+						<top>3</top>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]" >$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<left>96</left>
+						<top>0</top>
+						<width>32</width>
+						<height>32</height>
+						<texture colordiffuse="$VAR[ColorHighlight]" flipy="false" flipx="true">common/selectbigwall.png</texture>
+					</control>
+					<control type="image">
+						<posx>-512</posx>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<posx>-118</posx>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>45</top>
+							<right>10</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-384</posx>
+							<top>90</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<focusedlayout condition="Container.Row(3) + Container.Column(14)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>-128</left>
+						<top>-180</top>
+						<right>128</right>
+						<bottom>180</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<left>97</left>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<left>97</left>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>					
+					<control type="image">
+						<left>96</left>
+						<top>148</top>
+						<width>32</width>
+						<height>32</height>
+						<texture colordiffuse="$VAR[ColorHighlight]" flipy="true" flipx="true">common/selectbigwall.png</texture>
+					</control>
+					<control type="image">
+						<posy>-180</posy>
+						<posx>-512</posx>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<posx>-118</posx>
+						<posy>-180</posy>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Black300</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-384</posx>
+							<top>45</top>
+							<right>10</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-384</posx>
+							<top>90</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<focusedlayout condition="Container.Row(3) + !Container.Column(14)" width="256" height="360">
+					<control type="button">
+						<texturefocus>-</texturefocus>
+						<texturenofocus>-</texturenofocus>
+						<onfocus condition="Container.Content(movies)">ClearProperty(TVShowID,home)</onfocus>
+						<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowID,$INFO[ListItem.DBID],home)</onfocus>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>-180</top>
+						<right>0</right>
+						<bottom>180</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture diffuse="diffuse/bigwall.png" background="true">$VAR[PosterImage]</texture>
+					</control>
+					<control type="image">
+						<left>256</left>
+						<posy>-180</posy>
+						<right>-384</right>
+						<bottom>0</bottom>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="image">
+						<posx>-384</posx>
+						<posy>-180</posy>
+						<width>384</width>
+						<height>360</height>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<texture colordiffuse="Background" background="true">common/white.png</texture>
+						<animation effect="fade" start="95" end="95" condition="true">Conditional</animation>
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<visible>Skin.HasSetting(155wall.showinfo)</visible>
+					</control>
+					<control type="group">
+						<visible>!Container.Column(11) + !Container.Column(12) + !Container.Column(13) + !Container.Column(14) + !Container.Column(15)</visible>
+						<width>246</width>
+						<posy>-180</posy>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>-10</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<left>266</left>
+							<top>45</top>
+							<right>-384</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>	
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<left>266</left>
+							<top>90</top>
+							<right>-384</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+					<control type="group">
+						<visible>Container.Column(11) | Container.Column(12) | Container.Column(13)</visible>
+						<posy>-180</posy>						
+						<width>374</width>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Title][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.Artist][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<scroll>true</scroll>
+							<visible>Container.Content(musicvideos) + !IsEmpty(ListItem.Artist)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>-10</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<font>MediumSmall</font>
+							<label>[B]$INFO[ListItem.TvShowTitle][/B]</label>
+							<textcolor>Dark1</textcolor>
+							<visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+						<control type="label">
+							<posx>-374</posx>
+							<top>45</top>
+							<right>10</right>
+							<height>20</height>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>						
+						<!-- Plot -->
+						<control type="textbox">
+							<posx>-374</posx>
+							<top>90</top>
+							<right>10</right>
+							<bottom>0</bottom>
+							<align>left</align>
+							<font>MiniSmall</font>
+							<textcolor>Dark1</textcolor>
+							<label>$INFO[ListItem.Plot]</label>
+							<visible>Skin.HasSetting(155wall.showinfo)</visible>
+						</control>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<right>3</right>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture>$VAR[PosterPercentWatchedBack]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>
+					<control type="image">
+						<top>-177</top>
+						<right>3</right>
+						<width>28</width>
+						<height>28</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<texture colordiffuse="$VAR[ColorHighlight]">$VAR[PosterPercentWatched]</texture>
+						<visible>!stringcompare(ListItem.Label,..)</visible>
+					</control>					
+					<control type="image">
+						<left>0</left>	
+						<top>148</top>
+						<width>32</width>
+						<height>32</height>
+						<texture colordiffuse="$VAR[ColorHighlight]" flipy="true" flipx="false">common/selectbigwall.png</texture>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+	</include>
+
+</includes>

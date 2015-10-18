@@ -1,0 +1,687 @@
+<window>
+    <defaultcontrol>30</defaultcontrol>
+    <allowoverlay>yes</allowoverlay>
+    <defaultcontrol always="true">9101</defaultcontrol>
+    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=300&amp;group=mainmenu|movieshub|episodeshub|powermenu)</onload> 
+
+    <controls>
+        <include>GlobalBackground</include>
+        <include>Furniture_Header</include>
+        <include>Furniture_NowPlaying</include>
+        <include>Furniture_Clock</include>
+        <include>Furniture_Weather</include>
+        <control type="group">
+<!-- Ajout ICI -->        
+        	   <visible>!Window.IsActive(script-skinshortcuts.xml)</visible>
+            <include>Animation.Common</include>
+            <left>72</left>
+            <right>72</right>
+            <top>208</top>
+            <height>656</height>
+            
+            <control type="image">
+                <width>100%</width>
+                <height>100%</height>
+                <texture border="16" colordiffuse="Panel">common/rounded-shadow8.png</texture>
+            </control>
+            
+            <control type="group">
+                <left>8</left>
+                <right>8</right>
+                <top>8</top>
+                <bottom>8</bottom>
+                <!-- Left Group -->
+                <control type="grouplist" id="9100">
+                    <description>Button Area</description>
+                    <width>450</width>
+                    <top>140</top>
+                    <bottom>0</bottom>
+                    <itemgap>0</itemgap>
+                    <onleft>9000</onleft>
+                    <onright>9200</onright>
+                    <onup>9100</onup>
+                    <ondown>9100</ondown>
+                    <orientation>vertical</orientation>
+                    <control type="togglebutton" id="9101" description="Home">
+                        <usealttexture>ControlGroup(9100).HasFocus(9101)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">common/white.png</alttexturenofocus>
+                        <include>DefSettingsButton</include>
+                        <label>10000</label>
+                    </control>
+                    <control type="togglebutton" id="9104" description="Widgets">
+                        <usealttexture>ControlGroup(9100).HasFocus(9104)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">common/white.png</alttexturenofocus>
+                        <include>DefSettingsButton</include>
+                        <label>31144</label>
+                    </control>
+
+                    <control type="togglebutton" id="9102" description="Background">
+                        <usealttexture>ControlGroup(9100).HasFocus(9102)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">common/white.png</alttexturenofocus>
+                        <include>DefSettingsButton</include>
+                        <label>31110</label>
+                    </control>
+                    <control type="togglebutton" id="9105" description="Hub Items">
+                        <usealttexture>ControlGroup(9100).HasFocus(9105)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">common/white.png</alttexturenofocus>
+                        <include>DefSettingsButton</include>
+                        <label>31178</label>
+                    </control>
+                    <control type="togglebutton" id="9106" description="Furniture">
+                        <usealttexture>ControlGroup(9100).HasFocus(9106)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">common/white.png</alttexturenofocus>
+                        <include>DefSettingsButton</include>
+                        <label>31152</label>
+                    </control>
+                    <control type="togglebutton" id="9103" description="OSD">
+                        <usealttexture>ControlGroup(9100).HasFocus(9103)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">common/white.png</alttexturenofocus>
+                        <include>DefSettingsButton</include>
+                        <label>478</label>
+                    </control>
+                    
+                    <control type="togglebutton" id="9107" description="Extras">
+                        <usealttexture>ControlGroup(9100).HasFocus(9107)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">common/white.png</alttexturenofocus>
+                        <include>DefSettingsButton</include>
+                        <label>31169</label>
+                    </control>
+                </control>
+                
+                
+                <!-- Right Group -->
+                <control type="grouplist" id="9200">
+                    <description>Control Area</description>
+                    <left>450</left>
+                    <right>0</right>
+                    <top>140</top>
+                    <bottom>10</bottom>
+                    <itemgap>0</itemgap>
+                    <onleft>9100</onleft>
+                    <onright>9000</onright>
+                    <onup>9200</onup>
+                    <ondown>9200</ondown>
+                    <orientation>vertical</orientation>
+                    <!-- Home -->
+                    <control type="button" id="9211" description="Customise Home">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31109</label>
+                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+                    </control>
+                    <!-- Customise Shutdown Menu -->
+                    <control type="button" id="92792">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31791</label>
+                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>                    
+                    </control>
+                    <control type="button" id="9212" description="Reset Home to Defaults">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31132</label>
+                        <onclick>RunScript(script.skinshortcuts,type=resetall)</onclick>
+                    </control>                 
+
+                    <control type="button" id="9214" description="Home Style">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31247</label>
+                        <label2>$VAR[LabelHomeWidgetStyle]</label2>
+                        <onclick condition="Skin.HasSetting(home.classicwidgets)">Skin.SetBool(home.vertical)</onclick>
+                        <onclick condition="Skin.HasSetting(home.classicwidgets)">Skin.Reset(home.classicwidgets)</onclick>
+                        <onclick condition="Skin.HasSetting(home.vertical)">Skin.Reset(home.classicwidgets)</onclick>
+                        <onclick condition="Skin.HasSetting(home.vertical)">Skin.Reset(home.vertical)</onclick>
+                        <onclick condition="!Skin.HasSetting(home.vertical) + !Skin.HasSetting(home.classicwidgets)">Skin.Reset(home.vertical)</onclick>
+                        <onclick condition="!Skin.HasSetting(home.vertical) + !Skin.HasSetting(home.classicwidgets)">Skin.SetBool(home.classicwidgets)</onclick>
+                    </control>
+                    
+<!-- Ajout ICI -->                    
+                    <control type="button" id="92790" description="Set Transparency Light">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31770</label>
+                        <label2>$INFO[Skin.String(transparency.name)]</label2>
+                        <visible>Stringcompare(Skin.CurrentColourTheme,SKINDEFAULT) | Stringcompare(Skin.CurrentColourTheme,Light with Light Dialogs) | Stringcompare(Skin.CurrentColourTheme,Light with Dark Dialogs)</visible>
+                        <onclick>ActivateWindow(1200)</onclick>
+                    </control>
+<!-- Ajout ICI -->                    
+                    <control type="button" id="92791" description="Set Transparency Dark">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31770</label>
+                        <label2>$INFO[Skin.String(transparency.name)]</label2>
+                        <visible>Stringcompare(Skin.CurrentColourTheme,Dark with Dark Dialogs) | Stringcompare(Skin.CurrentColourTheme,Dark with Light Dialogs)</visible>
+                        <onclick>ActivateWindow(1201)</onclick>
+                    </control>                    
+                    
+                    <control type="radiobutton" id="9213" description="Show Header">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31115</label>
+                        <selected>Skin.HasSetting(home.showheader)</selected>
+                        <onclick>Skin.ToggleSetting(home.showheader)</onclick>
+                        <enable>!Skin.HasSetting(home.vertical)</enable>
+                    </control>               
+                    
+                    <control type="radiobutton" id="9216" description="Show Icons">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31190</label>
+                        <selected>Skin.HasSetting(home.showicons)</selected>
+                        <onclick>Skin.ToggleSetting(home.showicons)</onclick>
+                    </control>
+                    
+                    <control type="radiobutton" id="9218" description="Horz Sub">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9101)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31202</label>
+                        <enable>!Skin.HasSetting(home.showicons) + !Skin.HasSetting(home.vertical)</enable>
+                        <selected>Skin.HasSetting(home.submenu2)</selected>
+                        <onclick>Skin.ToggleSetting(home.submenu2)</onclick>
+                    </control>
+                        
+                    
+                    
+                            
+                    
+                    <!-- Fanart -->
+                    <control type="radiobutton" id="9223" description="Show fanart">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9102)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31121</label>
+                        <selected>!Skin.HasSetting(global.hidefanart)</selected>
+                        <onclick>Skin.ToggleSetting(global.hidefanart)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9224" description="Animate Fanart">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9102)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31146</label>
+                        <selected>Skin.HasSetting(Fanart.Animate)</selected>
+                        <onclick>Skin.ToggleSetting(Fanart.Animate)</onclick>
+                    </control>
+                    <control type="button" id="9225" description="Set Fallback Image">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9102)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31150</label>
+                        <label2>$INFO[Skin.String(fanart.fallback)]</label2>
+                        <onclick condition="IsEmpty(Skin.String(fanart.fallback))">Skin.SetImage(fanart.fallback)</onclick>
+                        <onclick condition="!IsEmpty(Skin.String(fanart.fallback))">Skin.Reset(fanart.fallback)</onclick>
+                    </control>
+                    <control type="button" id="9229" description="Set Weather Fanart">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9102)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31143</label>
+                        <label2>$INFO[Skin.String(weather.fanart)]</label2>
+                        <onclick condition="IsEmpty(Skin.String(weather.fanart))">Skin.SetPath(weather.fanart)</onclick>
+                        <onclick condition="!IsEmpty(Skin.String(weather.fanart))">Skin.Reset(weather.fanart)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9221" description="Show video in background">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9102)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31111</label>
+                        <selected>Skin.HasSetting(global.showvideo)</selected>
+                        <onclick>Skin.ToggleSetting(global.showvideo)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9222" description="Show vis in background">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9102)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31172</label>
+                        <selected>Skin.HasSetting(global.showvisualisation)</selected>
+                        <onclick>Skin.ToggleSetting(global.showvisualisation)</onclick>
+                    </control>
+                    
+                    <!-- OSD -->
+                    <control type="radiobutton" id="9234" description="Match theme">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31196</label>
+                        <selected>!Skin.HasSetting(osd.usetheme)</selected>
+                        <onclick>Skin.ToggleSetting(osd.usetheme)</onclick>
+                        <onclick>ReloadSkin()</onclick>
+                    </control>
+                    <control type="radiobutton" id="9235" description="Show Fanart">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31121</label>
+                        <selected>Skin.HasSetting(musicvis.fanartfallback)</selected>
+                        <enable>!System.HasAddon(script.artistslideshow) | Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
+                        <onclick>Skin.ToggleSetting(musicvis.fanartfallback)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9231" description="Show slideshow in background">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31118</label>
+                        <enable>System.HasAddon(script.artistslideshow)</enable>
+                        <selected>!Skin.HasSetting(ArtistSlideShow.Disabled)</selected>
+                        <onclick>Skin.ToggleSetting(ArtistSlideShow.Disabled)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9232" description="Show slideshow in background">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31119</label>
+                        <selected>Skin.HasSetting(OSDVisualisation.ShowFanart)</selected>
+                        <onclick>Skin.ToggleSetting(OSDVisualisation.ShowFanart)</onclick>
+                        <enable>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</enable>
+                    </control>
+                    <control type="radiobutton" id="9233" description="Animate Artist slideshow">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31120</label>
+                        <selected>Skin.HasSetting(ArtistSlideshow.Animate)</selected>
+                        <onclick>Skin.ToggleSetting(ArtistSlideshow.Animate)</onclick>
+                        <enable>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</enable>
+                    </control>
+<!-- Ajout ICI -->                    
+                     <control type="radiobutton" id="92300" description="Show extended NowPlaying">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31769</label>
+                        <selected>Skin.HasSetting(osd.showiextendednowplaying)</selected>
+                        <onclick>Skin.ToggleSetting(osd.showiextendednowplaying)</onclick>
+                    </control>                                       
+                    <control type="radiobutton" id="9236" description="Show detailed info on pause">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31201</label>
+                        <selected>Skin.HasSetting(osd.showinfoonpause)</selected>
+                        <onclick>Skin.ToggleSetting(osd.showinfoonpause)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9238" description="Always show osd info/controls in music visualisation">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31253</label>
+                        <selected>Skin.HasSetting(osd.alwaysshowmusicosd)</selected>
+                        <onclick>Skin.ToggleSetting(osd.alwaysshowmusicosd)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9237" description="Show clearart">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9103)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31217</label>
+                        <selected>Skin.HasSetting(ShowClearArtOSD)</selected>
+                        <onclick>Skin.ToggleSetting(ShowClearArtOSD)</onclick>
+                    </control>
+                    
+                    <!-- Widgets -->
+                    
+                    <control type="radiobutton" id="9242" description="Classic Widget Auto show">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9104)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31200</label>
+                        <enable>Skin.HasSetting(home.classicwidgets)</enable>
+                        <selected>Skin.HasSetting(home.dontautoshowwidget)</selected>
+                        <onclick>Skin.ToggleSetting(home.dontautoshowwidget)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9243" description="Show slideshow instead of fanart">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9104)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31149</label>
+                        <selected>Skin.HasSetting(home.dontshowfanart)</selected>
+                        <onclick condition="!Skin.HasSetting(home.dontshowfanart) + IsEmpty(Skin.String(home.slideshowpath))">Skin.SetPath(home.slideshowpath)</onclick>
+                        <onclick>Skin.ToggleSetting(home.dontshowfanart)</onclick>
+                    </control>
+                    <control type="button" id="9241" description="Set Slideshow Path">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9104)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31131</label>
+                        <label2>$INFO[Skin.String(home.slideshowpath)]</label2>
+                        <onclick condition="IsEmpty(Skin.String(home.slideshowpath))">Skin.SetPath(home.slideshowpath)</onclick>
+                        <onclick condition="!IsEmpty(Skin.String(home.slideshowpath))">Skin.Reset(home.dontshowfanart)</onclick>
+                        <onclick condition="!IsEmpty(Skin.String(home.slideshowpath))">Skin.Reset(home.slideshowpath)</onclick>
+                    </control>
+<!-- Ajout ICI -->                    
+                   <control type="radiobutton" id="9244" description="Weather flat icons">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9104)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31233</label>
+                        <selected>Skin.HasSetting(weather.useflaticons)</selected>
+                        <onclick>Skin.ToggleSetting(weather.useflaticons)</onclick>
+                    </control>                
+                    
+                    <!-- Hubs -->
+                    <control type="button" id="9251" description="Select Movies Hub Widget">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9105)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31182</label>
+                        <label2>$INFO[Skin.String(MovieHubWidget)]</label2>
+                        <onclick condition="IsEmpty(Skin.String(MovieHubWidget))">Skin.SetFile(MovieHubWidget,.xsp|.m3u,special://profile/playlists/video/)</onclick>
+                        <onclick condition="!IsEmpty(Skin.String(MovieHubWidget))">Skin.Reset(MovieHubWidget)</onclick>
+                    </control>
+                    <control type="button" id="9252" description="Select Movies Hub Items">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9105)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31256</label>
+                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=movieshub)</onclick>
+                    </control>
+                    <control type="button" id="9253" description="Select TV Shows Hub Widget">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9105)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31183</label>
+                        <label2>$INFO[Skin.String(TVHubWidget)]</label2>
+                        <onclick condition="IsEmpty(Skin.String(TVHubWidget))">Skin.SetFile(TVHubWidget,.xsp|.m3u,special://profile/playlists/video/)</onclick>
+                        <onclick condition="!IsEmpty(Skin.String(TVHubWidget))">Skin.Reset(TVHubWidget)</onclick>
+                    </control>
+                    <control type="button" id="9254" description="Select TV Hub Items">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9105)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31257</label>
+                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=episodeshub)</onclick>
+                    </control>
+                    
+                    
+                    <!-- Furniture -->
+                    <control type="radiobutton" id="9261" description="Header">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31115</label>
+ <!-- Modification ICI -->                                
+                        <selected>!Skin.HasSetting(furniture.header)</selected>
+                        <onclick>Skin.ToggleSetting(furniture.header)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9262" description="Clock">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31153</label>
+                        <selected>!Skin.HasSetting(furniture.clock)</selected>
+                        <onclick>Skin.ToggleSetting(furniture.clock)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9265" description="Weather">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31197</label>
+                        <selected>Skin.HasSetting(furniture.weather)</selected>
+                        <onclick>Skin.ToggleSetting(furniture.weather)</onclick>
+<!-- Suppression ICI -->                        
+                    </control>
+<!-- Suppression Top Weather ICI -->
+                    <control type="radiobutton" id="9263" description="Flags">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31154</label>
+                        <selected>!Skin.HasSetting(furniture.flags)</selected>
+                        <onclick>Skin.ToggleSetting(furniture.flags)</onclick>
+                    </control>
+<!-- Suppression Flags ICI -->
+<!-- Suppression ratings ICI -->
+                    <control type="radiobutton" id="9264" description="Now Playing">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31155</label>
+                        <selected>!Skin.HasSetting(furniture.nowplaying)</selected>
+                        <onclick>Skin.ToggleSetting(furniture.nowplaying)</onclick>
+                    </control>
+<!-- Ajout ICI -->                      
+                    <control type="radiobutton" id="92681" description="ExtraThumbs">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31748</label>
+                        <selected>Skin.HasSetting(show.extrathumbs)</selected>
+                        <onclick>Skin.ToggleSetting(show.extrathumbs)</onclick>
+                    </control>
+ <!-- Ajout ICI -->                    
+                    <control type="radiobutton" id="92682" description="Show clearart on video info">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31754</label>
+                        <selected>Skin.HasSetting(ShowClearArtInfo)</selected>
+                        <onclick>Skin.ToggleSetting(ShowClearArtInfo)</onclick>
+                    </control>    
+ <!-- Ajout ICI -->                    
+                    <control type="radiobutton" id="92683" description="Show cdart on video info">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31755</label>
+                        <selected>Skin.HasSetting(ShowCDArtInfo)</selected>
+                        <onclick>Skin.ToggleSetting(ShowCDArtInfo)</onclick>
+                    </control>  
+ <!-- Ajout ICI -->                    
+                    <control type="radiobutton" id="92684" description="Show studio logo on tvshows info">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31756</label>
+                        <selected>Skin.HasSetting(ShowStudioInfo)</selected>
+                        <onclick>Skin.ToggleSetting(ShowStudioInfo)</onclick>
+                    </control>
+<!-- Ajout ICI -->                    
+                    <control type="radiobutton" id="92686" description="Show media path">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31768</label>
+                        <selected>Skin.HasSetting(ShowMediaPath)</selected>
+                        <onclick>Skin.ToggleSetting(ShowMediaPath)</onclick>
+                    </control>
+ <!-- Ajout ICI -->                       
+                    <control type="button" id="92685" description="Episodes Settings">
+			<width>1310</width>
+			<include>DefSettingsButton</include>
+			<visible>ControlGroup(9100).HasFocus(9106)</visible>
+			<label>$LOCALIZE[31757]</label>
+			<label2 fallback="$LOCALIZE[31758]">$VAR[LabelEpisodesSettings]</label2>
+			<onclick>SetProperty(Dialog.NumItems,3)</onclick>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[31758])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(EpisodesSettings,$LOCALIZE[31758]))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31759])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(EpisodesSettings,$LOCALIZE[31759]))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31760])</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(EpisodesSettings,$LOCALIZE[31760]))</onclick>
+			<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31757])</onclick>
+		</control>	                                 
+                    <control type="radiobutton" id="9361" description="Plot Overlay">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31254</label>
+                        <selected>Skin.HasSetting(furniture.overlayinfo)</selected>
+                        <onclick>Skin.ToggleSetting(furniture.overlayinfo)</onclick>
+                    </control>                                                                                                       
+                   <control type="radiobutton" id="9268" description="Clearlogo">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31179</label>
+                        <selected>Skin.HasSetting(furniture.logo)</selected>
+                        <onclick>Skin.ToggleSetting(furniture.logo)</onclick>
+                    </control>
+<!-- Ajout ICI -->                    
+                     <control type="button" id="9266" description="Set Art Dir">
+			<width>1310</width>
+			<visible>ControlGroup(9100).HasFocus(9106)</visible>
+			<include>DefSettingsButton</include>
+			<label>31743</label>
+			<label2>$INFO[Skin.String(artworklocation)]</label2>
+			<onclick>Skin.SetPath(artworklocation)</onclick>
+		</control>	                    
+                    <control type="radiobutton" id="9267" description="Reflections">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9106)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31219</label>
+                        <selected>Skin.HasSetting(show.reflections)</selected>
+                        <onclick>Skin.ToggleSetting(show.reflections)</onclick>
+                    </control>
+                    
+                    
+                    
+                    <!-- Extras -->
+                    <control type="button" id="9271" description="Startup Video">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31168</label>
+                        <label2>$INFO[Skin.String(StartupPlaylist)]</label2>
+                        <onclick condition="IsEmpty(Skin.String(StartupPlaylist))">Skin.SetFile(StartupPlaylist,.mp4|.avi|.mkv|.xvid|.wmv|.mov|.xsp|.mp3|.wma|.flac|.m3u)</onclick>
+                        <onclick condition="!IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
+                    </control>
+                    <control type="button" id="9279" description="Set Custom Colour">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>$LOCALIZE[31238]</label>
+                        <label2>$INFO[Skin.String(focuscolor.name)]</label2>
+                        <onclick>ActivateWindow(1107)</onclick>
+                    </control>              
+<!-- Ajout ICI -->                    
+                    <control type="button" id="92792" description="Set Transparency Fanart Light">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31771</label>
+                        <label2>$INFO[Skin.String(transparencyfanart.name)]</label2>
+                        <visible>Stringcompare(Skin.CurrentColourTheme,SKINDEFAULT) | Stringcompare(Skin.CurrentColourTheme,Light with Light Dialogs) | Stringcompare(Skin.CurrentColourTheme,Light with Dark Dialogs)</visible>
+                        <onclick>ActivateWindow(1202)</onclick>
+                    </control>
+<!-- Ajout ICI -->                    
+                    <control type="button" id="92793" description="Set Transparency Fanart Dark">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31771</label>
+                        <label2>$INFO[Skin.String(transparencyfanart.name)]</label2>
+                        <visible>Stringcompare(Skin.CurrentColourTheme,Dark with Dark Dialogs) | Stringcompare(Skin.CurrentColourTheme,Dark with Light Dialogs)</visible>
+                        <onclick>ActivateWindow(1203)</onclick>
+                    </control>                                                                   
+                    <control type="radiobutton" id="9272" description="Kiosk Mode">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31199</label>
+                        <selected>Skin.HasSetting(global.kioskmode)</selected>
+                        <onclick>Skin.ToggleSetting(global.kioskmode)</onclick>
+                    </control>
+                    <control type="radiobutton" id="9273" description="Dont use circle icons">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31186</label>
+                        <selected>!Skin.HasSetting(global.hidecirles)</selected>
+                        <onclick>Skin.ToggleSetting(global.hidecirles)</onclick>
+                    </control>                        
+                    <!-- <control type="radiobutton" id="9275" description="TV Tunes">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31151</label>
+                        <selected>Skin.HasSetting(ActivateTvTunes)</selected>
+                        <onclick>Skin.ToggleSetting(ActivateTvTunes)</onclick>
+                        <enable>System.HasAddon(script.tvtunes)</enable>
+                    </control> -->
+                    <!-- <control type="radiobutton" id="9276" description="Update Next Aired on Startup">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31180</label>
+                        <selected>Skin.HasSetting(NextAired.Update)</selected>
+                        <onclick>Skin.ToggleSetting(NextAired.Update)</onclick>
+                        <enable>System.HasAddon(script.tv.show.next.aired)</enable>
+                    </control> -->
+                    <control type="radiobutton" id="9277" description="Busy Loader Minimal">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31237</label>
+                        <selected>Skin.HasSetting(hide.busydialog)</selected>
+                        <onclick>Skin.ToggleSetting(hide.busydialog)</onclick>
+                    </control>
+                    <control type="button" id="9274" description="Busy Loader Image">
+                        <width>1310</width>
+                        <visible>ControlGroup(9100).HasFocus(9107)</visible>
+                        <include>DefSettingsButton</include>
+                        <label>31216</label>
+                        <label2>$INFO[Skin.String(busyloader)]</label2>
+                        <onclick>Skin.SetFile(busyloader,.gif,special://skin/extras/spinners)</onclick>
+                    </control>
+                    <control type="button" id="9278" description="export skin settings">
+		   <width>1310</width>
+		   <visible>ControlGroup(9100).HasFocus(9107)</visible>
+		   <include>DefSettingsButton</include>
+		   <label>31744</label>
+		   <onclick>RunScript(script.skin.helper.service,action=backup)</onclick>
+		</control>
+		<control type="button" id="9281" description="import skin settings">
+		  <width>1310</width>
+		  <visible>ControlGroup(9100).HasFocus(9107)</visible>
+		  <include>DefSettingsButton</include>
+		  <label>31745</label>
+		  <onclick>RunScript(script.skin.helper.service,action=restore)</onclick>
+		</control>
+                </control>
+                
+                
+                
+                <!-- Lines -->
+                <control type="image">
+                    <top>10</top>
+                    <left>450</left>
+                    <width>1</width>
+                    <bottom>10</bottom>
+                    <colordiffuse>Black12</colordiffuse>
+                    <texture>common/white.png</texture>
+                </control>
+         
+                
+                <!-- Header -->
+                <control type="label">
+                    <left>30</left>
+                    <width>390</width>
+                    <posy>18</posy>
+                    <font>MediumBold</font>
+                    <label>5</label>
+                    <textcolor>PanelWhite100</textcolor>
+                </control>
+<!-- Suppression Label ICI --> 
+                <control type="label">
+                    <left>480</left>
+                    <width>390</width>
+                    <posy>18</posy>
+                    <font>MediumBold</font>
+                    <label>$VAR[Label_SettingsHeader]</label>
+                    <textcolor>PanelWhite100</textcolor>
+                </control>
+<!-- Suppression Label ICI -->                
+            </control>
+        </control>
+        <include>Def9000SettingsMenu</include>
+    </controls>
+</window>

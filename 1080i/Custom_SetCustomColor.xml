@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="dialog" id="1107">
+    <defaultcontrol always="true">9500</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <controls>
+        <include>GlobalOverlay</include>
+
+        <control type="group">
+            <include>Animation.ZoomIn</include>
+            <centerleft>50%</centerleft>
+            <posy>195</posy>
+            <width>1320</width>
+            <!--<include>Animation.FadeIn.Slide</include>-->
+            <control type="image">
+                <posx>-30</posx>
+                <posy>-30</posy>
+                <width>1380</width>
+                <height>770</height>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+            </control>
+
+            <control type="label">
+                <description>Heading</description>
+                <centerleft>50%</centerleft>
+                <posy>-10</posy>
+                <width>1320</width>
+                <font>MediumBold</font>
+                <align>center</align>
+                <label>[UPPERCASE]$LOCALIZE[31238][/UPPERCASE]</label>
+            </control>
+            <control type="panel" id="9500">
+                <top>70</top>
+                <height>640</height>
+                <width>1320</width>
+                <onup>9500</onup>
+                <ondown>9500</ondown>
+                <onleft>9500</onleft>
+                <onright>9500</onright>
+                <orientation>horizontal</orientation>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="160" width="440">
+                    <control type="label">
+                        <left>170</left>
+                        <top>25</top>
+                        <font>MediumBold</font>
+                        <textcolor>Black70</textcolor>
+                        <label>[UPPERCASE]$INFO[ListItem.Property(colorname)][/UPPERCASE]</label>
+                    </control>
+                    <control type="label">
+                        <left>170</left>
+                        <top>73</top>
+                        <font>SmalBold</font>
+                        <textcolor>Black70</textcolor>
+                        <label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="160" width="440">
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <texture colordiffuse="ff333333" border="20">common/box.png</texture>
+                    </control>
+                    <control type="label">
+                        <left>170</left>
+                        <top>25</top>
+                        <font>MediumBold</font>
+                        <textcolor>White100</textcolor>
+                        <label>[UPPERCASE]$INFO[ListItem.Property(colorname)][/UPPERCASE]</label>
+                    </control>
+                    <control type="label">
+                        <left>170</left>
+                        <top>73</top>
+                        <font>SmalBold</font>
+                        <textcolor>White100</textcolor>
+                        <label>[UPPERCASE]$INFO[ListItem.Label][/UPPERCASE]</label>
+                    </control>
+                </focusedlayout>
+                <content>
+                    <item id="1">
+                        <onclick>Skin.SetString(focuscolor.name,ff0385b5)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ff0385b5</label>
+                        <property name="colorname">Light Blue</property>
+                    </item>
+                    <item id="11">
+                        <onclick>Skin.SetString(focuscolor.name,ff305b9a)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ff305b9a</label>
+                        <property name="colorname">Blue</property>
+                    </item>
+                    <item id="2">
+                        <onclick>Skin.SetString(focuscolor.name,ff6c33b3)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ff6c33b3</label>
+                        <property name="colorname">Purple</property>
+                    </item>
+                    <item id="3">
+                        <onclick>Skin.SetString(focuscolor.name,ff8121a0)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ff8121a0</label>
+                        <property name="colorname">Mauve</property>
+                    </item>
+                    <item id="4">
+                        <onclick>Skin.SetString(focuscolor.name,ffa21b81)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ffa21b81</label>
+                        <property name="colorname">Pink</property>
+                    </item>
+                    <item id="5">
+                        <onclick>Skin.SetString(focuscolor.name,ffb33333)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ffb33333</label>
+                        <property name="colorname">Red</property>
+                    </item>
+                    <item id="6">
+                        <onclick>Skin.SetString(focuscolor.name,ffae501d)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ffae501d</label>
+                        <property name="colorname">Orange</property>
+                    </item>
+                    <item id="7">
+                        <onclick>Skin.SetString(focuscolor.name,ffa28d1b)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ffa28d1b</label>
+                        <property name="colorname">Yellow</property>
+                    </item>
+                    <item id="8">
+                        <onclick>Skin.SetString(focuscolor.name,ff6b8716)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ff6b8716</label>
+                        <property name="colorname">Light Green</property>
+                    </item>
+                    <item id="9">
+                        <onclick>Skin.SetString(focuscolor.name,ff16872b)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ff16872b</label>
+                        <property name="colorname">Green</property>
+                    </item>
+                    <item id="10">
+                        <onclick>Skin.SetString(focuscolor.name,ff6b5441)</onclick>
+                        <onclick>Close</onclick>
+                        <label>ff6b5441</label>
+                        <property name="colorname">Brown</property>
+                    </item>
+                    <item id="12">
+                        <onclick>Skin.SetString(focuscolor.name)</onclick>
+                        <onclick>Close</onclick>
+                        <label>$INFO[Skin.String(focuscolor.name)]</label>
+                        <property name="colorname">Custom</property>
+                    </item>
+                </content>
+            </control>
+            <control type="group">
+                <top>70</top>
+                <!-- column 1 -->
+                <control type="image">
+                    <left>10</left>
+                    <top>10</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ff0385b5" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>10</left>
+                    <top>170</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ff305b9a" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>10</left>
+                    <top>330</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ff6c33b3" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>10</left>
+                    <top>490</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ff8121a0" border="20">common/box.png</texture>
+                </control>
+                <!-- column 2 -->
+                <control type="image">
+                    <left>450</left>
+                    <top>10</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ffa21b81" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>450</left>
+                    <top>170</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ffb33333" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>450</left>
+                    <top>330</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ffae501d" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>450</left>
+                    <top>490</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ffa28d1b" border="20">common/box.png</texture>
+                </control>
+                <!-- column 3 -->
+                <control type="image">
+                    <left>890</left>
+                    <top>10</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ff6b8716" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>890</left>
+                    <top>170</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ff16872b" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>890</left>
+                    <top>330</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="ff6b5441" border="20">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <left>890</left>
+                    <top>490</top>
+                    <width>140</width>
+                    <height>140</height>
+                    <texture colordiffuse="$INFO[Skin.String(focuscolor.name)]" border="20">common/box.png</texture>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

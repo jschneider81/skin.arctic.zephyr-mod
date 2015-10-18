@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Save this code (for simplification sake) as a new file named:
+ Includes_Audio_And_SubtitleFlags.xml
+ -->
+ 
+ <!-- Insert this line into Includes.xml
+ <include file="Includes_Audio_And_SubtitleFlags.xml" />
+ -->
+ 
+ <!-- visible controls prevents one language flag to be shown multiple times, if there are multiple streams (audio and/or subtitles) of the same language present in media
+ TODO: inform and nicely request phil65 to add additional function in his script.skin.info.service to return unique array... in that case visible controls can be removed from this code, making it much simple and shorter
+ see: http://forum.kodi.tv/showthread.php?tid=203196&pid=2037013#pid2037013
+ -->
+ 
+ <!--
+In skin code just replace controls of type "image" in the audio and subtitles container controls of type "group" with <include>AudioFlags</include> or <include>SubtitleFlags</include> respectively 
+ -->
+ 
+<!-- Set constant for flag size, to simplify size manipulation on just one place -->
+  <constant name="AudioAndSubtitleFlagSize">28</constant>
+   
+  <include name="AudioFlags">
+      <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[ListItem.AudioLanguage,flags/lang/,.png]</texture>
+        <visible>IsEmpty(Window(movieinformation).Property(AudioLanguage.1)) + !IsEmpty(ListItem.AudioLanguage)</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.1),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.1))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.2),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.2))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.2))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.3),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.3))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.3))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.3))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.4),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.4))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.4))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.4))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.4))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.5),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.5))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.6),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.6))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.7),flags/lang/,.png]</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.7))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.8),flags/lang/,.png]</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.8))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.9),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.9))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.10),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.10))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.11),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.11))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.12),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.12))</visible>
+        <visible>!Stringcosmpare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.12))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.13),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.13))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.14),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.13),Window(movieinformation).Property(AudioLanguage.14))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.15),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.13),Window(movieinformation).Property(AudioLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.14),Window(movieinformation).Property(AudioLanguage.15))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.16),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.13),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.14),Window(movieinformation).Property(AudioLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.15),Window(movieinformation).Property(AudioLanguage.16))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.17),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.13),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.14),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.15),Window(movieinformation).Property(AudioLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.16),Window(movieinformation).Property(AudioLanguage.17))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.18),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.13),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.14),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.15),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.16),Window(movieinformation).Property(AudioLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.17),Window(movieinformation).Property(AudioLanguage.18))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.19),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.13),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.14),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.15),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.16),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.17),Window(movieinformation).Property(AudioLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.18),Window(movieinformation).Property(AudioLanguage.19))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(AudioLanguage.20),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.1),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.2),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.3),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.4),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.5),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.6),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.7),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.8),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.9),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.10),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.11),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.12),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.13),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.14),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.15),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.16),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.17),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.18),Window(movieinformation).Property(AudioLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(AudioLanguage.19),Window(movieinformation).Property(AudioLanguage.20))</visible>
+    </control>
+  </include>
+ 
+  <include name="SubtitleFlags">
+      <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[ListItem.SubtitlesLanguage,flags/lang/,.png]</texture>
+        <visible>IsEmpty(Window(movieinformation).Property(SubtitleLanguage.1))  + !IsEmpty(ListItem.SubtitlesLanguage)</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.1),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.1))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.2),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.2))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.2))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.3),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.3))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.3))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.3))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.4),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.4))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.4))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.4))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.4))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.5),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.5))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.5))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.6),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.6))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.6))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.7),flags/lang/,.png]</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.7))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.7))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.8),flags/lang/,.png]</texture>
+        <aspectratio>keep</aspectratio>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.8))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.9),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.9))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.10),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.10))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.11),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.11))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.12),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.12))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.13),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.13))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.14),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.13),Window(movieinformation).Property(SubtitleLanguage.14))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.15),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.13),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.14),Window(movieinformation).Property(SubtitleLanguage.15))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.16),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.13),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.14),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.15),Window(movieinformation).Property(SubtitleLanguage.16))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.17),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.13),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.14),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.15),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.16),Window(movieinformation).Property(SubtitleLanguage.17))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.18),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.13),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.14),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.15),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.16),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.17),Window(movieinformation).Property(SubtitleLanguage.18))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.19),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.13),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.14),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.15),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.16),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.17),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.18),Window(movieinformation).Property(SubtitleLanguage.19))</visible>
+    </control>
+    <control type="image">
+        <width>AudioAndSubtitleFlagSize</width>
+        <aspectratio>keep</aspectratio>
+        <texture fallback="flags/lang/blank.png">$INFO[Window(movieinformation).Property(SubtitleLanguage.20),flags/lang/,.png]</texture>
+        <visible>!IsEmpty(Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.1),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.2),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.3),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.4),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.5),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.6),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.7),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.8),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.9),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.10),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.11),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.12),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.13),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.14),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.15),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.16),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.17),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.18),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+        <visible>!Stringcompare(Window(movieinformation).Property(SubtitleLanguage.19),Window(movieinformation).Property(SubtitleLanguage.20))</visible>
+    </control>
+  </include>  
+</includes>
